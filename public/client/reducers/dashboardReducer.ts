@@ -1,17 +1,15 @@
 import * as types from '../constants/actionTypes';
+import { dashboardState, dashboardAction } from '../../Types/interfaces';
 
-const initialState = {
-  username: 'test',
+const initialState: dashboardState = {
   portfolioList: [],
   currentNFT: 'Cats',
   balance: 50,
   leaderBoard: [],
 };
 
-const marketsReducer = (state = initialState, action) => {
+const dashboardReducer = (state = initialState, action: dashboardAction) => {
   switch (action.type) {
-    case 'UPDATE_USERNAME':
-      break;
     case 'POPULATE_PORTFOLIO':
       break;
     case 'ADD_TO_PORTFOLIO':
@@ -29,4 +27,4 @@ const marketsReducer = (state = initialState, action) => {
   }
 };
 
-export default marketsReducer;
+export default dashboardReducer;

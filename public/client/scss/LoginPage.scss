@@ -20,7 +20,6 @@ body {
       width: 60vw;
     }
     .loginWrapper {
-      border: solid black;
       display: flex;
       flex-direction: column;
       width: 20vw;
@@ -28,12 +27,15 @@ body {
 
       .usernamePasswordDiv {
         width: 100%;
+        display: flex;
+        justify-content: space-evenly;
         input {
           width: 7vw;
         }
         input:focus {
           outline: none;
         }
+        margin-bottom: 1vh;
       }
       .buttonsDiv {
         display: flex;
