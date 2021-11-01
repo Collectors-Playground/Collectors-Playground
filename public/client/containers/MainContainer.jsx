@@ -1,60 +1,60 @@
-/**
- * ************************************
- *
- * @module  MainContainer
- * @author
- * @date
- * @description stateful component that renders TotalsDisplay and MarketsContainer
- *
- * ************************************
- */
+// /**
+//  * ************************************
+//  *
+//  * @module  MainContainer
+//  * @author
+//  * @date
+//  * @description stateful component that renders TotalsDisplay and MarketsContainer
+//  *
+//  * ************************************
+//  */
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+// import React, { Component } from 'react';
+// import { connect } from 'react-redux';
 
-import TotalsDisplay from '../components/TotalsDisplay.jsx';
-import MarketsContainer from './MarketsContainer.jsx';
-
-
-// import from child components...
-
-const mapStateToProps = (state) => {
+// import TotalsDisplay from '../components/TotalsDisplay.jsx';
+// import MarketsContainer from './MarketsContainer.jsx';
 
 
-  const props = {
-    totalCards: state.markets.totalCards,
-    totalMarkets: state.markets.totalMarkets
-  };
+// // import from child components...
 
-  return props;
+// const mapStateToProps = (state) => {
+
+
+//   const props = {
+//     totalCards: state.markets.totalCards,
+//     totalMarkets: state.markets.totalMarkets
+//   };
+
+//   return props;
   
-  // add pertinent state here
-};
+//   // add pertinent state here
+// };
 
-class MainContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
+// class MainContainer extends Component {
+//   constructor(props) {
+//     super(props);
+//   }
 
   
-  render() {
+//   render() {
   
-    return(
-      <div className="container">
-        <div className="outerBox">
-          <h1 id="header">MegaMarket Loyalty Cards</h1>
-          <TotalsDisplay 
-            totalCards={this.props.totalCards}
-            totalMarkets={this.props.totalMarkets}
-          />
-          <MarketsContainer />
+//     return(
+//       <div className="container">
+//         <div className="outerBox">
+//           <h1 id="header">MegaMarket Loyalty Cards</h1>
+//           <TotalsDisplay 
+//             totalCards={this.props.totalCards}
+//             totalMarkets={this.props.totalMarkets}
+//           />
+//           <MarketsContainer />
 
           
-        </div>
-      </div>
-    );
-  }
+//         </div>
+//       </div>
+//     );
+//   }
 
-}
+// }
 
-export default connect(mapStateToProps, null)(MainContainer);
+// export default connect(mapStateToProps, null)(MainContainer);
