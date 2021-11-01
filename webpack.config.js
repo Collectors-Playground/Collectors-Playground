@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const path = require('path');
 
 console.log(`Launching in ${process.env.NODE_ENV} mode`);
@@ -35,7 +34,6 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html'),
     }),
     new MiniCssExtractPlugin(),
-    // new BundleAnalyzerPlugin(),
   ],
 
   module: {
