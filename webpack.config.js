@@ -6,7 +6,6 @@ const path = require('path');
 console.log(`Launching in ${process.env.NODE_ENV} mode`);
 
 module.exports = {
-
   entry: './src/index.jsx',
   mode: process.env.NODE_ENV,
 
@@ -48,9 +47,17 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/env', '@babel/preset-react'],
-            plugins: ['@babel/plugin-transform-runtime', '@babel/transform-async-to-generator'],
+            plugins: [
+              '@babel/plugin-transform-runtime',
+              '@babel/transform-async-to-generator',
+            ],
           },
         },
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
 
       {
@@ -68,6 +75,8 @@ module.exports = {
         use: ['file-loader'],
       },
     ],
-
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
 };

@@ -1,25 +1,15 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react",
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve"
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/pages/src/redis.js",
-    "src/pages/src/redis.js"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "src/index.jsx"],
   "exclude": ["node_modules"]
 }
