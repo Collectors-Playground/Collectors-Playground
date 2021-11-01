@@ -11,22 +11,25 @@ sessionController.isLoggedIn = async (req, res, next) => {
       if (cookieCheck) {
         res.locals.user = ssid;
         return next();
-      } throw Error('No cookie in DB');
+      }
+      throw Error('No cookie in DB');
     }
     throw Error('No cookie in DB');
   } catch (err) {
     const defaultErr = {
       log: 'Error handler caught an error inside sessionController.isLoggedIn',
       status: 200,
-      message: { err: `An error occurred inside a middleware named sessionController.isLoggedIn : ${err}` },
+      message: {
+        err: `An error occurred inside a middleware named sessionController.isLoggedIn : ${err}`,
+      },
     };
     return next(defaultErr);
   }
 };
 
 /**
-* startSession - create and save a new Session into the database.
-*/
+ * startSession - create and save a new Session into the database.
+ */
 sessionController.startSession = async (req, res, next) => {
   try {
     const session = await models.Session.findOne({ cookieId: res.locals.user });
@@ -43,7 +46,9 @@ sessionController.startSession = async (req, res, next) => {
     const defaultErr = {
       log: 'Error handler caught an error inside sessionController.startSession',
       status: 500,
-      message: { err: `An error occurred inside a middleware named sessionController.startSession : ${err}` },
+      message: {
+        err: `An error occurred inside a middleware named sessionController.startSession : ${err}`,
+      },
     };
     return next(defaultErr);
   }
@@ -59,7 +64,9 @@ sessionController.endSession = async (req, res, next) => {
     const defaultErr = {
       log: 'Error handler caught an error inside sessionController.endSession',
       status: 500,
-      message: { err: `An error occurred inside a middleware named sessionController.endSession : ${err}` },
+      message: {
+        err: `An error occurred inside a middleware named sessionController.endSession : ${err}`,
+      },
     };
     return next(defaultErr);
   }

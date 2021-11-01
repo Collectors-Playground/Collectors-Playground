@@ -12,8 +12,6 @@
   "extends": [
     "eslint:recommended",
     "airbnb",
-    "next",
-    "next/core-web-vitals",
     "plugin:react/recommended",
     "prettier"
   ],

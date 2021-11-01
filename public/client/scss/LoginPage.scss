@@ -1,0 +1,126 @@
+body {
+  background-color: #eef1f2;
+  background-image: url("https://cdn.pixabay.com/photo/2019/04/10/11/56/watercolour-4116932__340.png");
+  background-repeat: no-repeat;
+  background-width: 80%;
+  background-position-x: center;
+  margin: 0px;
+}
+
+.loginWrapper {
+  margin-top: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+//the title!
+h1 {
+  font-family: $fontTitle;
+  font-size: 60px;
+  color: #1d465c;
+  margin-bottom: 40px;
+}
+
+#inputButtonWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#username {
+  border-radius: 4px;
+  border: 2px solid transparent;
+  height: 30px;
+  width: 160px;
+  background-color: rgb(252, 252, 250);
+}
+#password {
+  border-radius: 4px;
+  border: 2px solid transparent;
+  height: 30px;
+  width: 160px;
+  background-color: rgb(252, 252, 250);
+}
+//forgot password and log in button wrapper
+#buttonsDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#forgotPassword {
+  color: #1d465c;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+#loginBtn {
+  border-radius: 4px;
+  background-color: #1d465c;
+  border: 0px solid transparent;
+  width: 70px;
+  height: 40px;
+  font-size: 15px;
+  font-family: $buttonsFont;
+  color: #e6ebee;
+}
+
+#loginBtn:hover {
+  cursor: pointer;
+}
+
+#or {
+  margin-top: 40px;
+  color: #1d465c;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+h6 {
+  font-family: $fontSubTitle;
+  font-size: 15px;
+  margin-right: 10%;
+  margin-bottom: 10px;
+}
+
+#signupArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #1d465c;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+}
+
+#signupBtn {
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid #1d465c;
+  width: 70px;
+  height: 30px;
+  font-size: 15px;
+  font-family: $buttonsFont;
+  color: #1d465c;
+}
+
+#signupBtn:hover {
+  cursor: pointer;
+}
+
+#loginAttemptMessage {
+  margin-top: 10px;
+  font-family: $fontSubTitle;
+  font-size: 12px;
+  color: rgb(145, 13, 13);
+}
