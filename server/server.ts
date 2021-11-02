@@ -1,13 +1,60 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import { graphqlHTTP } from 'express-graphql';
+import { graphql, buildSchema } from 'graphql';
+import db from './models/CP';
+import bcrypt from 'bcryptjs';
 import { schema } from './Schema';
 
 const app = express();
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+//pass in endpoint, middleware that is graphqlHTTP
+//graphqlHTTP brings together the schemas and resolvers
 app.use(
   '/graphql',
   graphqlHTTP({
     schema,
+    // schema: buildSchema(`
+    //   type User {
+    //     user_name: String!
+    //     password: String
+    //   }
+
+    //   input UserInput {
+    //     user_name: String!
+    //     password: String!
+    //   }
+
+    //   type RootQuery {
+
+    //   }
+
+    //   type RooMutation {
+    //     createUser(userInput: UserInput): User
+    //   }
+
+    //   schema {
+    //     query: RootQuery
+    //     mutation: RooMutation
+    //   }
+    // `),
+    // rootValue: {
+    //   createUser: async (args: any) => {
+    //     const { user_name, password } = args.userInput;
+    //     return await bcrypt
+    //       .hash(password, 10)
+    //       .then((hashedPW: any) => {
+    //         const SQLquery: any = `INSERT INTO user (user_name, password) VALUES (${user_name}, ${hashedPW}) RETURNING user_id`;
+    //         const { rows } = db.query(SQLquery);
+    //         return rows[0].user_id;
+    //       })
+    //       .catch((err: any) => {
+    //         throw err;
+    //       });
+    //   },
+    //},
     graphiql: true,
   })
 );
@@ -26,10 +73,6 @@ app.use(
 app.listen(3000, () => {
   console.log('Running on port 3000');
 });
-
-
-
-
 
 // const path = require('path');
 // const sessionController = require('./controllers/sessionController');

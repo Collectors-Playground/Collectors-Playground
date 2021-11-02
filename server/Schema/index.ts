@@ -1,15 +1,22 @@
-//exporting all consolidated schemas here
-
+// //exporting all consolidated schemas here
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
+import {
+  GET_USER,
+  CREATE_USER,
+} from './Queries_and_Mutations/User';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
-  fields: {},
+  fields: {
+    getUser: GET_USER,
+  },
 });
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
-  fields: {},
+  fields: {
+    createUser: CREATE_USER,
+  },
 });
 
 export const schema = new GraphQLSchema({
