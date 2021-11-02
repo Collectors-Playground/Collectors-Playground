@@ -1,16 +1,27 @@
-import React, { Dispatch, useState } from 'react';
+import React, { useState } from 'react';
 import '../scss/LoginPage.scss';
-import * as actions from '../actions/actions';
-import { DispatchLogin, LoginProps } from '../../Types/interfaces';
+import { LoginProps } from '../../Types/interfaces';
 import { connect } from 'react-redux';
-import { UPDATE_USERNAME } from '../constants/actionTypes';
+import { useHistory } from 'react-router-dom';
+import {
+  UPDATE_USERNAME,
+  POPULATE_PORTFOLIO,
+  UPDATE_BALANCE,
+  POPULATE_LEADERBOARD,
+} from '../constants/actionTypes';
 
 function Login(props: LoginProps) {
-  const { userReducer } = props;
+  const {
+    updateUsernameDispatch,
+    updatePortfolioListDispatch,
+    updateBalanceDispatch,
+    populateLeaderboardDispatch,
+  } = props;
   const [username, setUsername]: [string, (value: string) => void] =
     useState('');
   const [password, setPassword]: [string, (value: string) => void] =
     useState('');
+  const history = useHistory();
 
   const userLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +34,8 @@ function Login(props: LoginProps) {
     //   .then((results) => {
     //     usernameDispatch(username);
     //   });
-    userReducer(username);
+    updateUsernameDispatch(username);
+    history.replace('/dashboard');
   };
 
   const userSignUp = (e: React.FormEvent) => {
@@ -74,6 +86,12 @@ function Login(props: LoginProps) {
 }
 
 export default connect(null, (dispatch) => ({
-  userReducer: (username: string) =>
+  updateUsernameDispatch: (username: string) =>
     dispatch({ type: UPDATE_USERNAME, payload: username }),
+  updatePortfolioListDispatch: (portfolioList: string) =>
+    dispatch({ type: POPULATE_PORTFOLIO, payload: portfolioList }),
+  updateBalanceDispatch: (balance: number) =>
+    dispatch({ type: UPDATE_BALANCE, payload: balance }),
+  populateLeaderboardDispatch: (leaderboard: string) =>
+    dispatch({ type: POPULATE_LEADERBOARD, payload: leaderboard }),
 }))(Login);

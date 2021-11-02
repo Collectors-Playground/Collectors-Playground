@@ -1,20 +1,17 @@
-import * as React from 'react';
+import React from 'react';
+import Home from './Home';
 import Login from './Login';
+import Dashboard from './Dashboard';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="mainPageWrapper">
-      <div className="titleLoginWrapper">
-        <div className="title">
-          <h1>Collector's Playground</h1>
-        </div>
-        <Login />
-      </div>
-      <div className="centralPageWrapper">
-        <div className="liveGraph">Graph</div>
-        <div className="sidebar"> Sidebar</div>
-      </div>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/dashboard" component={Dashboard} />
+      </Switch>
+    </Router>
   );
 }
 
