@@ -12,5 +12,5 @@
     "allowSyntheticDefaultImports": true
   },
   "include": ["**/*.ts", "**/*.tsx", "src/index.jsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "package-lock.json"]
 }
