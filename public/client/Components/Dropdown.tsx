@@ -1,22 +1,14 @@
 import React, { ReactElement, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { connect } from 'react-redux';
-import {
-  GlobalState,
-  dashboardProps,
-  LeaderboardProps,
-  portfolioInt,
-  NFTListInt,
-  DropdownProps,
-} from '../../Types/interfaces';
+import { NFTListInt, DropdownProps } from '../../Types/interfaces';
 import DropdownItem from './DropdownItem';
 import { SELL_FROM_PORTFOLIO } from '../constants/actionTypes';
 
 function Dropdown(props: DropdownProps) {
   const [dropdownDisplay, changeDropdownDisplay] = useState(false);
 
-  const { NFTList } = props;
+  const { NFTList, updateNFTToBuyDispatch } = props;
   const createNFTPurchaseList = (NFTList: NFTListInt[]) => {
     const NFTpurchaseListOut: ReactElement[] = NFTList.map((item, index) => {
       return (
@@ -25,6 +17,7 @@ function Dropdown(props: DropdownProps) {
           name={item.name}
           description={item.description}
           cost={item.cost}
+          updateNFTToBuyDispatch={updateNFTToBuyDispatch}
         />
       );
     });

@@ -25,6 +25,7 @@ const dashboardState: dashboardStateInt = {
     { name: 'SuperCat4', description: 'A really super cat4', cost: 0.04 },
     { name: 'SuperCat5', description: 'A really super cat5', cost: 0.05 },
   ],
+  NFTToBuy: { name: '', description: '', cost: 0 },
 };
 
 const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
@@ -33,7 +34,17 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
     case types.POPULATE_PORTFOLIO:
       break;
     case types.ADD_TO_PORTFOLIO:
-      break;
+      const { portfolioList } = stateCopy;
+
+      portfolioList.push({
+        name: action.payload.name,
+        boughtPrice: action.payload.cost,
+        sellPrice: action.payload.cost,
+      });
+      return {
+        ...state,
+        portfolioList,
+      };
     case types.SELL_FROM_PORTFOLIO:
       const NFTtoSell = action.payload;
       const currentPortfolioList: portfolioInt[] = stateCopy.portfolioList;
@@ -56,6 +67,15 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
       break;
     case types.UPDATE_CURRENT_NFT:
       return { ...state, currentNFT: action.payload };
+    case types.NFT_TO_BUY:
+      return {
+        ...state,
+        NFTToBuy: {
+          name: action.payload.name,
+          description: action.payload.description,
+          cost: action.payload.cost,
+        },
+      };
 
     default: {
       return state;

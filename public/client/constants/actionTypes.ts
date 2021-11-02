@@ -11,3 +11,5 @@ export const POPULATE_LEADERBOARD: string = 'POPULATE_LEADERBOARD';
 export const UPDATE_BALANCE: string = 'UPDATE_BALANCE';
 
 export const UPDATE_CURRENT_NFT: string = 'UPDATE_CURRENT_NFT';
+
+export const NFT_TO_BUY: string = 'NFT_TO_BUY';
