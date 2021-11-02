@@ -1,6 +1,7 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 import Balance from './Balance';
 import Leaderboard from './Leaderboard';
+import Dropdown from './Dropdown';
 import { connect } from 'react-redux';
 
 import {
@@ -8,12 +9,21 @@ import {
   dashboardProps,
   LeaderboardProps,
   portfolioInt,
+  NFTListInt,
 } from '../../Types/interfaces';
-import { SELL_FROM_PORTFOLIO } from '../constants/actionTypes';
+import {
+  SELL_FROM_PORTFOLIO,
+  UPDATE_CURRENT_NFT,
+} from '../constants/actionTypes';
 import Portfolio from './Portfolio';
 
 function Dashboard(props: dashboardProps) {
-  const { username, dashboard, sellPortfolioDispatch } = props;
+  const {
+    username,
+    dashboard,
+    sellPortfolioDispatch,
+    updateCurrentNFTDispatch,
+  } = props;
 
   const createLeaderboard = (leaderList: LeaderboardProps[]) => {
     const leaderListOut: ReactElement[] = leaderList.map((user, index) => {
@@ -22,7 +32,7 @@ function Dashboard(props: dashboardProps) {
           key={index}
           username={user.username}
           balance={user.balance}
-          place={index}
+          place={index + 1}
         />
       );
     });
@@ -38,6 +48,8 @@ function Dashboard(props: dashboardProps) {
           boughtPrice={item.boughtPrice}
           sellPrice={item.sellPrice}
           sellNFT={sellPortfolioDispatch}
+          currentNFT={dashboard.currentNFT}
+          updateCurrentNFT={updateCurrentNFTDispatch}
         />
       );
     });
@@ -48,6 +60,7 @@ function Dashboard(props: dashboardProps) {
     <div className="dashboardWrapper">
       <div className="topRowWrapper">
         <Balance currentBalance={dashboard.balance} />
+        <Dropdown NFTList={dashboard.NFTList} />
         <div className="logoutWrapper">logout {username}</div>
       </div>
       <div className="mainContentWrapper">
@@ -61,7 +74,7 @@ function Dashboard(props: dashboardProps) {
             {createPortfolioList(dashboard.portfolioList)}
           </div>
         </div>
-        <div className="NFTTimeline"></div>
+        <div className="NFTTimeline">{dashboard.currentNFT}</div>
       </div>
     </div>
   );
@@ -75,5 +88,7 @@ export default connect(
   (dispatch) => ({
     sellPortfolioDispatch: (NFT: string) =>
       dispatch({ type: SELL_FROM_PORTFOLIO, payload: NFT }),
+    updateCurrentNFTDispatch: (NFT: string) =>
+      dispatch({ type: UPDATE_CURRENT_NFT, payload: NFT }),
   })
 )(Dashboard);

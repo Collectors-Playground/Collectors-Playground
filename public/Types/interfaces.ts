@@ -14,7 +14,8 @@ export interface dashboardAction {
 export interface dashboardProps {
   username: string;
   dashboard: dashboardStateInt;
-  sellPortfolioDispatch?: (NFT: string) => void;
+  sellPortfolioDispatch: (NFT: string) => void;
+  updateCurrentNFTDispatch: (NFT: string) => void;
 }
 
 export interface LeaderboardProps {
@@ -28,12 +29,24 @@ export interface portfolioInt {
   boughtPrice: number;
   sellPrice: number;
   sellNFT?: (NFT: string) => void;
+  updateCurrentNFT?: (NFT: string) => void;
+  currentNFT?: string;
 }
 export interface dashboardStateInt {
   portfolioList: portfolioInt[];
   currentNFT: string;
   balance: number;
   leaderboard: leaderboardInt[];
+  NFTList: NFTListInt[];
+}
+
+export interface DropdownProps {
+  NFTList: NFTListInt[];
+}
+export interface NFTListInt {
+  name: string;
+  description: string;
+  cost: number;
 }
 export interface leaderboardInt {
   username: string;

@@ -18,6 +18,13 @@ const dashboardState: dashboardStateInt = {
     { username: 'Person2', balance: 200 },
     { username: 'Person3', balance: 300 },
   ],
+  NFTList: [
+    { name: 'SuperCat', description: 'A really super cat', cost: 0.01 },
+    { name: 'SuperCat2', description: 'A really super cat2', cost: 0.02 },
+    { name: 'SuperCat3', description: 'A really super cat3', cost: 0.03 },
+    { name: 'SuperCat4', description: 'A really super cat4', cost: 0.04 },
+    { name: 'SuperCat5', description: 'A really super cat5', cost: 0.05 },
+  ],
 };
 
 const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
@@ -31,15 +38,24 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
       const NFTtoSell = action.payload;
       const currentPortfolioList: portfolioInt[] = stateCopy.portfolioList;
       let currentBalance = stateCopy.balance;
+      let currentNFT;
       const filteredList = currentPortfolioList.filter((NFT: portfolioInt) => {
         if (NFT.name === NFTtoSell) currentBalance += NFT.sellPrice;
         return NFT.name !== NFTtoSell;
       });
-      return { ...state, portfolioList: filteredList, balance: currentBalance };
+      if (filteredList.length === 0) currentNFT = 'Purchase an NFT to view';
+      return {
+        ...state,
+        portfolioList: filteredList,
+        balance: currentBalance,
+        currentNFT,
+      };
     case types.POPULATE_LEADERBOARD:
       break;
     case types.UPDATE_BALANCE:
       break;
+    case types.UPDATE_CURRENT_NFT:
+      return { ...state, currentNFT: action.payload };
 
     default: {
       return state;

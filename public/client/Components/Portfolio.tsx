@@ -2,9 +2,23 @@ import React from 'react';
 import { portfolioInt } from '../../Types/interfaces';
 
 function Portfolio(props: portfolioInt) {
-  const { name, boughtPrice, sellPrice, sellNFT } = props;
+  const {
+    name,
+    boughtPrice,
+    sellPrice,
+    sellNFT,
+    currentNFT,
+    updateCurrentNFT,
+  } = props;
   return (
-    <div className="indivPortfolioItem">
+    <div
+      className={
+        name === currentNFT
+          ? 'indivPortfolioItemSelected'
+          : 'indivPortfolioItem'
+      }
+      onClick={() => updateCurrentNFT(name)}
+    >
       <div>Name: {name}</div>
       <div>Bought at: {boughtPrice}</div>
       <div>Current Sell Price: {sellPrice}</div>
