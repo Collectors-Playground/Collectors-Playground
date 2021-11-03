@@ -1,6 +1,7 @@
 $darkBackground: #242b2e;
 $primaryLight: #4c5457;
 $fontColor: whitesmoke;
+@import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 body {
   background-color: $darkBackground;
 }
@@ -72,9 +73,17 @@ body {
   }
   .centralPageWrapper {
     display: flex;
+    flex-direction: row;
     border: solid yellow;
     height: 70vh;
-
+    align-self: center;
+    width: 75%;
+    .carousel {
+      display: flex;
+      width: 50%;
+      height: 25vh;
+      align-self: center;
+    }
     .liveGraph {
       margin-left: auto;
       border: solid blue;
@@ -90,6 +99,7 @@ body {
 .dashboardWrapper {
   color: $fontColor;
   height: 100%;
+  overflow-y: hidden;
   .topRowWrapper {
     display: flex;
     width: 100%;
@@ -234,6 +244,7 @@ body {
     flex-direction: column;
     width: 30%;
     height: 100%;
+    margin-left: 2vw;
     .leaderboardWrapper {
       display: flex;
       flex-direction: column;
@@ -355,6 +366,8 @@ body {
     width: 100%;
     border: solid gold;
     margin-top: 1vh;
+    height: 80%;
+    margin-left: 3vw;
   }
 
   .descriptionAndCostWrapper {
