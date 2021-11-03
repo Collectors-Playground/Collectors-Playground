@@ -4,15 +4,26 @@ import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { DropdownItemProps } from '../../Types/interfaces';
 
 function DropdownItem(props: DropdownItemProps) {
-  const { name, description, price, updateNFTToBuyDispatch } = props;
+  const {
+    id,
+    token_id,
+    contract_name,
+    name,
+    description,
+    price,
+    image,
+    updateNFTToBuyDispatch,
+  } = props;
 
   return (
     <div className="dropdownItemWrapper">
-      <span className="nameSpan">{name}</span>
+      <span className="nameSpan">{name || `${contract_name}-${token_id}`}</span>
       <span className="extraInfoArrow">
         <FontAwesomeIcon
           icon={faArrowAltCircleRight}
-          onClick={() => updateNFTToBuyDispatch(name, description, price)}
+          onClick={() =>
+            updateNFTToBuyDispatch(name, description, price, image)
+          }
         />
       </span>
     </div>

@@ -13,9 +13,13 @@ function Dropdown(props: DropdownProps) {
       return (
         <DropdownItem
           key={index}
+          id={item.id}
+          token_id={item.token_id}
+          contract_name={item.contract_name}
           name={item.name}
           description={item.description}
           price={item.price}
+          image={item.image}
           updateNFTToBuyDispatch={updateNFTToBuyDispatch}
         />
       );

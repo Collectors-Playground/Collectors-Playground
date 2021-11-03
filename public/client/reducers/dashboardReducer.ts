@@ -123,6 +123,7 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
           name: action.payload.name,
           description: action.payload.description,
           price: action.payload.price,
+          image: action.payload.image,
         },
       };
 

@@ -80,13 +80,18 @@ export interface DropdownProps {
 }
 
 export interface DropdownItemProps {
-  name: string;
-  description: string;
-  price: number;
+  id?: number;
+  token_id?: string;
+  contract_name?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  image?: string;
   updateNFTToBuyDispatch: (
     name: string,
     description: string,
-    price: number
+    price: number,
+    image: string
   ) => void;
 }
 
