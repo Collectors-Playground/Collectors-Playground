@@ -10,26 +10,27 @@ export default function (app: Express) {
       .json(res.locals.nfts);
   });
 
-  app.post(
-    '/getNFTs',
-    nftController.userNFTs,
-    (req: Request, res: Response) => {
-      res
-        .status(200)
-        .setHeader('content-type', 'application/json')
-        .json(res.locals.getUserNFTs);
-    }
-  );
+  app.post('/getUserNFTs', (req: Request, res: Response) => {
+    nftController.userNFTs;
+    res
+      .status(200)
+      .setHeader('content-type', 'application/json')
+      .json(res.locals.getUserNFTs);
+  });
 
-  app.post(
-    '/sellNFTs',
-    nftController.sellNFTs,
-    (req: Request, res: Response) => {
-      res.status(200).json(res.locals.infoAfterSell);
-    }
-  );
+  app.post('/sellNFTs', (req: Request, res: Response) => {
+    nftController.sellNFTs;
+    res
+      .status(200)
+      .setHeader('content-type', 'application/json')
+      .json(res.locals.infoAfterSell);
+  });
 
-  app.post('/buyNFTs', nftController.buyNFTs, (req: Request, res: Response) => {
-    res.status(200).json(res.locals.infoAfterBuy);
+  app.post('/buyNFTs', (req: Request, res: Response) => {
+    nftController.buyNFTs;
+    res
+      .status(200)
+      .setHeader('content-type', 'application/json')
+      .json(res.locals.infoAfterBuy);
   });
 }
