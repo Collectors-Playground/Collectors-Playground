@@ -1,4 +1,5 @@
 import React from 'react';
+import Graph from './Graph';
 import { currentNFTInt } from '../../Types/interfaces';
 
 function SelectedNFT(props: currentNFTInt) {
@@ -14,7 +15,9 @@ function SelectedNFT(props: currentNFTInt) {
           <div className="currentNFTDescription">{description}</div>
         </div>
       </div>
-      <div className="graph"></div>
+      <div className="graphContainer">
+        <Graph />
+      </div>
     </div>
   );
 }
