@@ -7,7 +7,7 @@ import { InformationPopupProps } from '../../Types/interfaces';
 function InformationPopup(props: InformationPopupProps) {
   const {
     name,
-    cost,
+    price,
     description,
     updateNFTToBuyDispatch,
     addNFTToPortfolioDispatch,
@@ -16,10 +16,10 @@ function InformationPopup(props: InformationPopupProps) {
     buyNFTDispatch,
   } = props;
 
-  const checkPurchase = (name: string, cost: number) => {
+  const checkPurchase = (name: string, price: number) => {
     const messageDiv = document.querySelector('#purchaseNFTErrorMessage');
 
-    if (cost > currentBalance) {
+    if (price > currentBalance) {
       messageDiv.innerHTML = 'You do not have enough ETH to purchase this NFT.';
       setTimeout(() => (messageDiv.innerHTML = ''), 3000);
       return;
@@ -35,23 +35,23 @@ function InformationPopup(props: InformationPopupProps) {
         return;
       }
     }
-    addNFTToPortfolioDispatch(name, cost);
+    addNFTToPortfolioDispatch(name, price);
     updateNFTToBuyDispatch('', '', 0);
-    buyNFTDispatch(cost);
+    buyNFTDispatch(price);
     messageDiv.innerHTML = `Succesfully purchased the ${name} NFT! It is now in your portfolio`;
     setTimeout(() => (messageDiv.innerHTML = ''), 3000);
   };
 
   return (
-    <div className="descriptionAndCostCard">
+    <div className="descriptionAndpriceCard">
       <div>
         <p>Description: {description}</p>
         <p>
-          Cost: {cost}{' '}
+          price: {price}{' '}
           <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
         </p>
         <div className="buttonDiv">
-          <button onClick={() => checkPurchase(name, cost)}>Buy</button>
+          <button onClick={() => checkPurchase(name, price)}>Buy</button>
         </div>
       </div>
       <div className="infoExit">

@@ -19,13 +19,61 @@ const dashboardState: dashboardStateInt = {
     { username: 'Person3', balance: 300 },
   ],
   NFTList: [
-    { name: 'SuperCat', description: 'A really super cat', cost: 1 },
-    { name: 'SuperCat2', description: 'A really super cat2', cost: 2 },
-    { name: 'SuperCat3', description: 'A really super cat3', cost: 3 },
-    { name: 'SuperCat4', description: 'A really super cat4', cost: 4 },
-    { name: 'SuperCat5', description: 'A really super cat5', cost: 500 },
+    {
+      name: 'SuperCat',
+      description: 'A really super cat',
+      price: 1,
+      image: '',
+      contract_name: '',
+      id: 1,
+      token_id: '12',
+    },
+    {
+      name: 'SuperCat2',
+      description: 'A really super cat2',
+      price: 2,
+      image: '',
+      contract_name: '',
+      id: 1,
+      token_id: '12',
+    },
+    {
+      name: 'SuperCat3',
+      description: 'A really super cat3',
+      price: 3,
+      image: '',
+      contract_name: '',
+      id: 1,
+      token_id: '12',
+    },
+    {
+      name: 'SuperCat4',
+      description: 'A really super cat4',
+      price: 4,
+      image: '',
+      contract_name: '',
+      id: 1,
+      token_id: '12',
+    },
+    {
+      name: 'SuperCat5',
+      description: 'A really super cat5',
+      price: 500,
+      image: '',
+      contract_name: '',
+      id: 1,
+      token_id: '12',
+    },
   ],
-  NFTToBuy: { name: '', description: '', cost: 0 },
+  NFTToBuy: {
+    name: '',
+    description: '',
+    price: 0,
+    image: '',
+    contract_name: '',
+    id: 1,
+    token_id: '12',
+  },
 };
 
 const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
@@ -38,8 +86,8 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
 
       portfolioList.push({
         name: action.payload.name,
-        boughtPrice: action.payload.cost,
-        sellPrice: action.payload.cost,
+        boughtPrice: action.payload.price,
+        sellPrice: action.payload.price,
       });
       return {
         ...state,
@@ -74,9 +122,12 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
         NFTToBuy: {
           name: action.payload.name,
           description: action.payload.description,
-          cost: action.payload.cost,
+          price: action.payload.price,
         },
       };
+
+    case types.POPULATE_NFT_LIST:
+      return { ...state, NFTList: action.payload };
 
     default: {
       return state;

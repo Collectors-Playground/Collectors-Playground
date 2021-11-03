@@ -9,89 +9,121 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+  overflow-x: hidden;
   .titleLoginWrapper {
     display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
     .title {
+      align-self: center;
+      font-size: 4rem;
       justify-content: center;
-      display: flex;
-      color: $fontColor;
-      text-align: center;
-      width: 60vw;
-    }
-    .loginWrapper {
       display: flex;
       flex-direction: column;
-      width: 20vw;
-      justify-content: center;
-
-      .usernamePasswordDiv {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        input {
-          width: 7vw;
-        }
-        input:focus {
-          outline: none;
-        }
-        margin-bottom: 1vh;
-      }
-      .buttonsDiv {
-        display: flex;
-        justify-content: space-evenly;
-        input {
-          border-radius: 0.25vw;
-          outline: none;
-          font-size: 1vw;
-          cursor: pointer;
-        }
-        #loginBtn {
-          background-color: rgb(64, 211, 64);
-          color: $fontColor;
-          border: solid rgb(138, 138, 194) 0.15vw;
-        }
-        #loginBtn:hover {
-          background-color: rgb(138, 138, 194);
-          color: $fontColor;
-          color: black;
-        }
-        #signUpButton {
-          background-color: rgb(138, 138, 194);
-          color: $fontColor;
-          border: solid rgb(64, 211, 64) 0.15vw;
-        }
-        #signUpButton:hover {
-          background-color: rgb(64, 211, 64);
-          color: $fontColor;
-          border: solid rgb(64, 211, 64) 0.15vw;
-        }
+      color: $fontColor;
+      text-align: center;
+      width: 80vw;
+      height: fit-content;
+      word-wrap: break-word;
+      h2 {
+        margin-top: -3vh;
+        font-style: italic;
+        font-size: 2rem;
       }
     }
   }
   .centralPageWrapper {
     display: flex;
     flex-direction: row;
-    border: solid yellow;
     height: 70vh;
     align-self: center;
-    width: 75%;
-    .carousel {
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+    .carouselLoginWrapper {
       display: flex;
-      width: 50%;
-      height: 25vh;
       align-self: center;
-    }
-    .liveGraph {
-      margin-left: auto;
-      border: solid blue;
-      width: 60vw;
-    }
-    .sidebar {
-      border: solid red;
-      width: 20vw;
+      width: 100%;
+      height: 70%;
+      justify-content: space-evenly;
+
+      .carousel {
+        display: flex;
+        width: 60%;
+        height: 100%;
+        align-self: center;
+      }
+      .loginWrapper {
+        color: $fontColor;
+        align-self: center;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 20vw;
+        height: 100%;
+        font-size: 2.5rem;
+        margin-top: -3vh;
+
+        .enterDiv {
+          width: 100%;
+          height: fit-content;
+        }
+
+        .usernamePasswordDiv {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          justify-content: space-evenly;
+
+          align-self: center;
+          height: 15vh;
+
+          margin-bottom: 1vh;
+          input {
+            width: 9vw;
+            height: 3vh;
+            border-radius: 0.5vw;
+          }
+          input:focus {
+            outline: none;
+          }
+          .username {
+            align-self: center;
+            width: 50%;
+            height: fit-content;
+          }
+          .password {
+            align-self: center;
+            width: 50%;
+            height: fit-content;
+          }
+        }
+        .buttonsDiv {
+          display: flex;
+          justify-content: space-evenly;
+          input {
+            width: 8vw;
+            height: 4vh;
+            border-radius: 0.25vw;
+            outline: none;
+            font-size: 1vw;
+            cursor: pointer;
+          }
+
+          input {
+            background-color: $primaryLight;
+            color: $fontColor;
+            border: $primaryLight 0.15vw;
+          }
+          input:hover {
+            background-color: green;
+            color: $fontColor;
+            color: black;
+          }
+        }
+      }
     }
   }
 }

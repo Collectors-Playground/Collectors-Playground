@@ -94,7 +94,7 @@ function Dashboard(props: dashboardProps) {
             <InformationPopup
               name={dashboard.NFTToBuy.name}
               description={dashboard.NFTToBuy.description}
-              cost={dashboard.NFTToBuy.cost}
+              price={dashboard.NFTToBuy.price}
               updateNFTToBuyDispatch={updateNFTToBuyDispatch}
               addNFTToPortfolioDispatch={addNFTToPortfolioDispatch}
               currentPortfolio={dashboard.portfolioList}
@@ -119,17 +119,20 @@ export default connect(
       dispatch({ type: SELL_FROM_PORTFOLIO, payload: NFT }),
     updateCurrentNFTDispatch: (NFT: string) =>
       dispatch({ type: UPDATE_CURRENT_NFT, payload: NFT }),
-    updateNFTToBuyDispatch: (name: string, description: string, cost: number) =>
-      dispatch({ type: NFT_TO_BUY, payload: { name, description, cost } }),
-    addNFTToPortfolioDispatch: (name: string, cost: number) =>
+    updateNFTToBuyDispatch: (
+      name: string,
+      description: string,
+      price: number
+    ) => dispatch({ type: NFT_TO_BUY, payload: { name, description, price } }),
+    addNFTToPortfolioDispatch: (name: string, price: number) =>
       dispatch({
         type: ADD_TO_PORTFOLIO,
-        payload: { name, cost },
+        payload: { name, price },
       }),
-    buyNFTDispatch: (cost: number) =>
+    buyNFTDispatch: (price: number) =>
       dispatch({
         type: UPDATE_BALANCE,
-        payload: cost,
+        payload: price,
       }),
   })
 )(Dashboard);

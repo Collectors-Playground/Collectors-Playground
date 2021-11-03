@@ -15,7 +15,7 @@ function Dropdown(props: DropdownProps) {
           key={index}
           name={item.name}
           description={item.description}
-          cost={item.cost}
+          price={item.price}
           updateNFTToBuyDispatch={updateNFTToBuyDispatch}
         />
       );
