@@ -24,6 +24,7 @@ export interface dashboardProps {
     cost: number
   ) => void;
   addNFTToPortfolioDispatch: (name: string, cost: number) => void;
+  buyNFTDispatch: (cost: number) => void;
 }
 
 export interface LeaderboardProps {
@@ -61,6 +62,7 @@ export interface InformationPopupProps {
     description: string,
     cost: number
   ) => void;
+  buyNFTDispatch: (cost: number) => void;
   addNFTToPortfolioDispatch: (name: string, cost: number) => void;
 }
 export interface DropdownProps {

@@ -19,11 +19,11 @@ const dashboardState: dashboardStateInt = {
     { username: 'Person3', balance: 300 },
   ],
   NFTList: [
-    { name: 'SuperCat', description: 'A really super cat', cost: 0.01 },
-    { name: 'SuperCat2', description: 'A really super cat2', cost: 0.02 },
-    { name: 'SuperCat3', description: 'A really super cat3', cost: 0.03 },
-    { name: 'SuperCat4', description: 'A really super cat4', cost: 0.04 },
-    { name: 'SuperCat5', description: 'A really super cat5', cost: 0.05 },
+    { name: 'SuperCat', description: 'A really super cat', cost: 1 },
+    { name: 'SuperCat2', description: 'A really super cat2', cost: 2 },
+    { name: 'SuperCat3', description: 'A really super cat3', cost: 3 },
+    { name: 'SuperCat4', description: 'A really super cat4', cost: 4 },
+    { name: 'SuperCat5', description: 'A really super cat5', cost: 500 },
   ],
   NFTToBuy: { name: '', description: '', cost: 0 },
 };
@@ -64,7 +64,8 @@ const dashboardReducer = (state = dashboardState, action: dashboardAction) => {
     case types.POPULATE_LEADERBOARD:
       break;
     case types.UPDATE_BALANCE:
-      break;
+      const currBalance = stateCopy.balance;
+      return { ...state, balance: currBalance - action.payload };
     case types.UPDATE_CURRENT_NFT:
       return { ...state, currentNFT: action.payload };
     case types.NFT_TO_BUY:

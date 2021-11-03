@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { NFTListInt, DropdownProps } from '../../Types/interfaces';
 import DropdownItem from './DropdownItem';
-import { SELL_FROM_PORTFOLIO } from '../constants/actionTypes';
 
 function Dropdown(props: DropdownProps) {
   const [dropdownDisplay, changeDropdownDisplay] = useState(false);
@@ -27,7 +26,7 @@ function Dropdown(props: DropdownProps) {
   return (
     <div className="dropdownWrapper">
       <div className="dropdown">
-        Available NFTs to purchase
+        Press the dropdown button to view available NFTs for purchase.
         {dropdownDisplay && (
           <div className="dropdownList">{createNFTPurchaseList(NFTList)}</div>
         )}

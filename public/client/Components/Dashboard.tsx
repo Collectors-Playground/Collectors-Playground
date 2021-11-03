@@ -18,6 +18,7 @@ import {
   UPDATE_CURRENT_NFT,
   NFT_TO_BUY,
   ADD_TO_PORTFOLIO,
+  UPDATE_BALANCE,
 } from '../constants/actionTypes';
 
 function Dashboard(props: dashboardProps) {
@@ -28,6 +29,7 @@ function Dashboard(props: dashboardProps) {
     updateCurrentNFTDispatch,
     updateNFTToBuyDispatch,
     addNFTToPortfolioDispatch,
+    buyNFTDispatch,
   } = props;
 
   const createLeaderboard = (leaderList: LeaderboardProps[]) => {
@@ -69,7 +71,9 @@ function Dashboard(props: dashboardProps) {
           NFTList={dashboard.NFTList}
           updateNFTToBuyDispatch={updateNFTToBuyDispatch}
         />
-        <div className="logoutWrapper">Logout {username}</div>
+        <div className="logoutWrapper">
+          <span className="logout">Logout </span>
+        </div>
       </div>
       <div className="mainContentWrapper">
         <div className="leaderboardPortfolioWrapper">
@@ -78,8 +82,10 @@ function Dashboard(props: dashboardProps) {
             {createLeaderboard(dashboard.leaderboard)}
           </div>
           <div className="portfolioWrapper">
-            Portfolio
-            {createPortfolioList(dashboard.portfolioList)}
+            <div className="portfolioTitle">Portfolio</div>
+            <div className="portfolioList">
+              {createPortfolioList(dashboard.portfolioList)}
+            </div>
           </div>
         </div>
         <div className="NFTTimeline">{dashboard.currentNFT}</div>
@@ -93,6 +99,7 @@ function Dashboard(props: dashboardProps) {
               addNFTToPortfolioDispatch={addNFTToPortfolioDispatch}
               currentPortfolio={dashboard.portfolioList}
               currentBalance={dashboard.balance}
+              buyNFTDispatch={buyNFTDispatch}
             />
           )}
           <div id="purchaseNFTErrorMessage"></div>
@@ -118,6 +125,11 @@ export default connect(
       dispatch({
         type: ADD_TO_PORTFOLIO,
         payload: { name, cost },
+      }),
+    buyNFTDispatch: (cost: number) =>
+      dispatch({
+        type: UPDATE_BALANCE,
+        payload: cost,
       }),
   })
 )(Dashboard);

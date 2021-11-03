@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-
 import { InformationPopupProps } from '../../Types/interfaces';
-import { SELL_FROM_PORTFOLIO } from '../constants/actionTypes';
 
 function InformationPopup(props: InformationPopupProps) {
   const {
@@ -14,14 +12,15 @@ function InformationPopup(props: InformationPopupProps) {
     addNFTToPortfolioDispatch,
     currentPortfolio,
     currentBalance,
+    buyNFTDispatch,
   } = props;
 
   const checkPurchase = (name: string, cost: number) => {
-    const errorDiv = document.querySelector('#purchaseNFTErrorMessage');
+    const messageDiv = document.querySelector('#purchaseNFTErrorMessage');
 
     if (cost > currentBalance) {
-      errorDiv.innerHTML = 'You do not have enough ETH to purchase this NFT.';
-      setTimeout(() => (errorDiv.innerHTML = ''), 3000);
+      messageDiv.innerHTML = 'You do not have enough ETH to purchase this NFT.';
+      setTimeout(() => (messageDiv.innerHTML = ''), 3000);
       return;
     }
     for (let i = 0; i < currentPortfolio.length; i++) {
@@ -29,13 +28,17 @@ function InformationPopup(props: InformationPopupProps) {
 
       console.log(currentNFT.name, name);
       if (currentNFT.name === name) {
-        errorDiv.innerHTML =
+        messageDiv.innerHTML =
           'You have already purchased this NFT. Please select another one to purchase.';
-        setTimeout(() => (errorDiv.innerHTML = ''), 1500);
+        setTimeout(() => (messageDiv.innerHTML = ''), 1500);
         return;
       }
     }
     addNFTToPortfolioDispatch(name, cost);
+    updateNFTToBuyDispatch('', '', 0);
+    buyNFTDispatch(cost);
+    messageDiv.innerHTML = `Succesfully purchased the ${name} NFT! It is now in your portfolio`;
+    setTimeout(() => (messageDiv.innerHTML = ''), 3000);
   };
 
   return (

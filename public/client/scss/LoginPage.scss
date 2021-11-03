@@ -1,4 +1,5 @@
-$darkBackground: rgba(0, 0, 0, 0.753);
+$darkBackground: #242b2e;
+$primaryLight: #4c5457;
 $fontColor: whitesmoke;
 body {
   background-color: $darkBackground;
@@ -88,6 +89,7 @@ body {
 
 .dashboardWrapper {
   color: $fontColor;
+  height: 100%;
   .topRowWrapper {
     display: flex;
     width: 100%;
@@ -106,16 +108,18 @@ body {
       height: 100%;
       display: flex;
       align-items: center;
+      text-align: center;
+      font-size: 3rem;
       .dropdown {
         display: flex;
         flex-direction: column;
         width: 100%;
         height: 100%;
         text-align: center;
-        font-size: 3rem;
         justify-content: center;
         align-content: center;
         align-items: center;
+        border: solid blue;
         .dropdownList {
           position: fixed;
           left: 50.75%;
@@ -156,19 +160,19 @@ body {
         }
       }
       .dropdownList::-webkit-scrollbar {
-        width: 1vw;
+        width: 0.5vw;
       }
 
       .dropdownList::-webkit-scrollbar-track {
         background-color: #e4e4e4;
-        border-radius: 2vw;
+        border-radius: 0.5vw;
       }
 
       .dropdownList::-webkit-scrollbar-thumb {
-        border-radius: 2vw;
-        border: 0.25vw solid transparent;
+        border-radius: 0.5vw;
+        border: 0.15vw solid transparent;
         background-clip: content-box;
-        background-color: #8070d4;
+        background-color: #9690b6;
       }
     }
     .dropdownButton {
@@ -184,35 +188,53 @@ body {
   .logoutWrapper {
     display: flex;
     font-size: 3rem;
-    justify-content: flex-end;
-    border: solid green;
+    text-align: center;
+    justify-content: center;
     width: 25%;
     height: 100%;
+    .logout {
+      text-decoration: underline;
+      opacity: 50%;
+      height: fit-content;
+      width: fit-content;
+    }
+    .logout:hover {
+      cursor: pointer;
+      opacity: 100%;
+    }
   }
 }
 .mainContentWrapper {
   width: 100%;
-  height: 70vh;
+  height: 100%;
   display: flex;
   .leaderboardPortfolioWrapper {
     display: flex;
     flex-direction: column;
     width: 30%;
     height: 100%;
+    border: solid blue;
     .leaderboardWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 100%;
-      height: 17vh;
+      height: 40vh;
       text-align: center;
       font-size: 3rem;
       .individualLeader {
         display: flex;
         font-size: 2rem;
-        width: 100%;
+        width: 80%;
         height: 3vh;
         border: solid blue;
         border-radius: 0.75vw;
         margin-bottom: 1vh;
         justify-content: space-between;
+        padding: 1.5rem;
+        .leaderUser {
+          font-style: italic;
+        }
       }
     }
 
@@ -225,40 +247,85 @@ body {
       justify-content: space-evenly;
       overflow-x: hidden;
       overflow-y: auto;
+      border: solid red;
+      .portfolioTitle {
+        height: 1vh;
+        margin-top: -3vh;
+      }
+      .portfolioList {
+        height: 60vh;
 
-      .indivPortfolioItem {
-        text-align: left;
-        font-size: 2rem;
-        border: solid magenta;
-        border-radius: 0.75vw;
-        transition: 0.5s linear;
-        padding: 2rem;
+        .indivPortfolioItem {
+          text-align: left;
+          font-size: 2rem;
+          border: solid magenta;
+          border-radius: 0.75vw;
+          transition: 0.5s linear;
+          padding: 2rem;
+          margin-bottom: 1vh;
 
-        button {
-          width: 6vw;
+          button {
+            color: $fontColor;
+            font-size: 2rem;
+            width: 7vw;
+            height: 3vh;
+            border-radius: 1vw;
+            border: solid green;
+            background-color: transparent;
+          }
+          button:hover {
+            cursor: pointer;
+            transition: 1s linear;
+            background-color: green;
+          }
+        }
+        .indivPortfolioItem:hover {
+          cursor: pointer;
+        }
+
+        .indivPortfolioItemSelected {
+          text-align: left;
+          font-size: 2rem;
+          border: solid magenta;
+          border-radius: 0.75vw;
+          background-color: rgba(56, 144, 56, 0.541);
+          transition: 0.25s linear;
+          padding: 2rem;
+          margin-bottom: 1vh;
+
+          button {
+            color: $fontColor;
+            font-size: 2rem;
+            width: 7vw;
+            height: 3vh;
+            border-radius: 1vw;
+            border: solid green;
+            background-color: transparent;
+          }
+          button:hover {
+            cursor: pointer;
+            transition: 1s linear;
+            background-color: green;
+          }
+        }
+        .indivPortfolioItemSelected:hover {
           cursor: pointer;
         }
       }
-      .indivPortfolioItem:hover {
-        cursor: pointer;
+      .portfolioWrapper::-webkit-scrollbar {
+        width: 0.5vw;
       }
 
-      .indivPortfolioItemSelected {
-        text-align: left;
-        font-size: 2rem;
-        border: solid magenta;
-        border-radius: 0.75vw;
-        background-color: rgba(56, 144, 56, 0.541);
-        transition: 0.25s linear;
-        padding: 2rem;
-
-        button {
-          width: 6vw;
-          cursor: pointer;
-        }
+      .portfolioWrapper::-webkit-scrollbar-track {
+        background-color: #e4e4e4;
+        border-radius: 0.5vw;
       }
-      .indivPortfolioItemSelected:hover {
-        cursor: pointer;
+
+      .portfolioWrapper::-webkit-scrollbar-thumb {
+        border-radius: 0.5vw;
+        border: 0.15vw solid transparent;
+        background-clip: content-box;
+        background-color: #9690b6;
       }
     }
   }
@@ -270,9 +337,10 @@ body {
   .descriptionAndCostWrapper {
     display: flex;
     flex-direction: column;
-    border: solid green;
     width: 43.5%;
+    height: 100%;
     margin-right: auto;
+    border: solid yellow;
 
     .descriptionAndCostCard {
       font-size: 3rem;
