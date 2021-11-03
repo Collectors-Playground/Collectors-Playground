@@ -7,10 +7,12 @@ console.log(`Launching in ${process.env.NODE_ENV} mode`);
 module.exports = {
   entry: './src/index.jsx',
   mode: process.env.NODE_ENV,
+  cache: true,
 
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
 
   devServer: {
@@ -26,7 +28,13 @@ module.exports = {
         changeOrigin: true,
       },
     },
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [{ from: /^\/dashboard/, to: '/' }],
+    },
+
+    // {
+    //   index: path.join(__dirname, 'build', 'index.html'),
+    // },
   },
 
   plugins: [

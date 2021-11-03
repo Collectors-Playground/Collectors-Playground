@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Login from './Login';
-import Graph from './Graph';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel';
 import { connect } from 'react-redux';
@@ -45,7 +44,7 @@ function Home(props: HomeProps) {
     //         <AliceCarousel
     //           autoPlay
     //           infinite
-    //           autoPlayInterval={3000}
+    //           autoPlayInterval={1500}
     //           autoHeight={true}
     //           autoWidth={true}
     //           autoPlayStrategy="none"

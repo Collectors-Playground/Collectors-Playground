@@ -7,6 +7,7 @@ import { InformationPopupProps } from '../../Types/interfaces';
 function InformationPopup(props: InformationPopupProps) {
   const {
     name,
+    image,
     price,
     description,
     updateNFTToBuyDispatch,
@@ -27,7 +28,6 @@ function InformationPopup(props: InformationPopupProps) {
     for (let i = 0; i < currentPortfolio.length; i++) {
       const currentNFT = currentPortfolio[i];
 
-      console.log(currentNFT.name, name);
       if (currentNFT.name === name) {
         messageDiv.innerHTML =
           'You have already purchased this NFT. Please select another one to purchase.';
@@ -35,32 +35,46 @@ function InformationPopup(props: InformationPopupProps) {
         return;
       }
     }
-    addNFTToPortfolioDispatch(name, price);
-    updateNFTToBuyDispatch('', '', 0);
+    addNFTToPortfolioDispatch(name, price, image, description);
+    updateNFTToBuyDispatch('', '', 0, '');
     buyNFTDispatch(price);
     messageDiv.innerHTML = `Succesfully purchased the ${name} NFT! It is now in your portfolio`;
     setTimeout(() => (messageDiv.innerHTML = ''), 3000);
   };
 
   return (
-    <div className="descriptionAndpriceCard">
+    <div className="descriptionAndPriceCard">
+      <div className="imageInfoAndExitWrapper">
+        <div className="spaceFill"></div>
+        <div className="imageInfo">
+          <img
+            src={`${image}`}
+            width={`${0.1 * window.innerWidth}`}
+            height={`${0.2 * window.innerHeight}`}
+          />
+        </div>
+        <div className="exitWrapper">
+          <div className="infoExit">
+            <FontAwesomeIcon
+              icon={faTimes}
+              onClick={() => {
+                updateNFTToBuyDispatch('', '', 0, '');
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
       <div>
+        <p>Name: {name}</p>
         <p>Description: {description}</p>
         <p>
-          price: {price}{' '}
+          Price: {price}{' '}
           <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
         </p>
         <div className="buttonDiv">
           <button onClick={() => checkPurchase(name, price)}>Buy</button>
         </div>
-      </div>
-      <div className="infoExit">
-        <FontAwesomeIcon
-          icon={faTimes}
-          onClick={() => {
-            updateNFTToBuyDispatch('', '', 0);
-          }}
-        />
       </div>
     </div>
   );

@@ -15,14 +15,15 @@ function DropdownItem(props: DropdownItemProps) {
     updateNFTToBuyDispatch,
   } = props;
 
+  const usedName = name || `${contract_name}-${token_id}`;
   return (
     <div className="dropdownItemWrapper">
-      <span className="nameSpan">{name || `${contract_name}-${token_id}`}</span>
+      <span className="nameSpan">{usedName}</span>
       <span className="extraInfoArrow">
         <FontAwesomeIcon
           icon={faArrowAltCircleRight}
           onClick={() =>
-            updateNFTToBuyDispatch(name, description, price, image)
+            updateNFTToBuyDispatch(usedName, description, price, image)
           }
         />
       </span>

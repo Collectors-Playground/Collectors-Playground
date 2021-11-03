@@ -1,5 +1,6 @@
 $darkBackground: #242b2e;
 $primaryLight: #4c5457;
+$primaryDark: #000003;
 $fontColor: whitesmoke;
 @import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 body {
@@ -131,7 +132,8 @@ body {
 .dashboardWrapper {
   color: $fontColor;
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: auto;
+
   .topRowWrapper {
     display: flex;
     width: 100%;
@@ -198,7 +200,7 @@ body {
           .dropdownItemWrapper {
             display: flex;
             flex-direction: row;
-            font-size: 3rem;
+            font-size: 1.5rem;
             border: solid black;
             background-color: $primaryLight;
             border-radius: 1vw;
@@ -206,6 +208,7 @@ body {
             margin-bottom: 1vh;
             height: 25vh;
             width: 60%;
+            word-wrap: break-word;
 
             .nameSpan {
               width: 80%;
@@ -227,7 +230,7 @@ body {
       }
 
       .dropdownList::-webkit-scrollbar-track {
-        background-color: #e4e4e4;
+        background-color: $primaryDark;
         border-radius: 0.5vw;
       }
 
@@ -235,7 +238,7 @@ body {
         border-radius: 0.5vw;
         border: 0.15vw solid transparent;
         background-clip: content-box;
-        background-color: #9690b6;
+        background-color: $primaryLight;
       }
     }
     .dropdownButton {
@@ -266,6 +269,21 @@ body {
       opacity: 100%;
     }
   }
+}
+.dashboardWrapper::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.dashboardWrapper::-webkit-scrollbar-track {
+  background-color: $primaryDark;
+  border-radius: 0.5vw;
+}
+
+.dashboardWrapper::-webkit-scrollbar-thumb {
+  border-radius: 0.5vw;
+  border: 0.15vw solid transparent;
+  background-clip: content-box;
+  background-color: $primaryLight;
 }
 .mainContentWrapper {
   width: 100%;
@@ -321,13 +339,26 @@ body {
 
         .indivPortfolioItem {
           text-align: left;
-          font-size: 2rem;
+          font-size: 1.5rem;
           border: solid black;
           border-radius: 0.75vw;
           transition: 0.5s linear;
           padding: 2rem;
           margin-bottom: 1vh;
           background-color: $primaryLight;
+          .nameImageWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            .portfolioName {
+              align-self: flex-start;
+              margin-right: auto;
+              margin-top: auto;
+              width: fit-content;
+              height: fit-content;
+            }
+          }
 
           button {
             color: $fontColor;
@@ -350,13 +381,26 @@ body {
 
         .indivPortfolioItemSelected {
           text-align: left;
-          font-size: 2rem;
+          font-size: 1.5rem;
           border: solid black;
           border-radius: 0.75vw;
           background-color: rgba(56, 144, 56, 0.541);
           transition: 0.25s linear;
           padding: 2rem;
           margin-bottom: 1vh;
+          .nameImageWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            .portfolioName {
+              align-self: flex-start;
+              margin-right: auto;
+              margin-top: auto;
+              width: fit-content;
+              height: fit-content;
+            }
+          }
 
           button {
             color: $fontColor;
@@ -383,7 +427,7 @@ body {
     }
 
     .portfolioWrapper::-webkit-scrollbar-track {
-      background-color: #e4e4e4;
+      background-color: $primaryDark;
       border-radius: 0.5vw;
     }
 
@@ -391,15 +435,61 @@ body {
       border-radius: 0.5vw;
       border: 0.15vw solid transparent;
       background-clip: content-box;
-      background-color: #9690b6;
+      background-color: $primaryLight;
     }
   }
-  .NFTTimeline {
+  .currentNFTWrapper {
     width: 100%;
     border: solid gold;
     margin-top: 1vh;
-    height: 80%;
+    height: 90%;
     margin-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    .imageAndDescriptionWrapper {
+      display: flex;
+      width: 100%;
+      height: 50%;
+      border: solid blue;
+      .currentNFTImage {
+        width: 50%;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        .NFTimage {
+          display: flex;
+          width: 80%;
+          height: fit-content;
+          align-self: center;
+          justify-content: center;
+        }
+      }
+      .currentNFTDescriptionNameWrapper {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        justify-content: space-evenly;
+        .currentNFTName {
+          width: fit-content;
+          height: fit-content;
+          align-self: center;
+          text-decoration: underline;
+          font-style: italic;
+        }
+        .currentNFTDescription {
+          margin-top: 1vh;
+          height: 100%;
+          width: 100%;
+          align-content: center;
+        }
+      }
+    }
+    .graph {
+      width: 100%;
+      height: 100%;
+      border: solid red;
+    }
   }
 
   .descriptionAndCostWrapper {
@@ -411,17 +501,50 @@ body {
     margin-top: 1vh;
 
     .descriptionAndPriceCard {
-      font-size: 3rem;
+      font-size: 1.5rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-content: center;
       border: solid $primaryLight;
       border-radius: 1vw;
       padding: 2rem;
-      height: 35vh;
+      height: fit-content;
       width: 80%;
-      margin: auto;
 
+      .imageInfoAndExitWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .spaceFill {
+          width: 25%;
+          height: 100%;
+        }
+        .imageInfo {
+          width: fit-content;
+          height: fit-content;
+          align-self: center;
+        }
+
+        .exitWrapper {
+          display: flex;
+          flex-direction: row;
+          align-self: flex-end;
+          justify-content: flex-end;
+          height: 100%;
+          width: 25%;
+          .infoExit {
+            font-size: 4rem;
+            opacity: 50%;
+            margin-bottom: auto;
+            margin-left: auto;
+          }
+          .infoExit:hover {
+            cursor: pointer;
+            opacity: 100%;
+          }
+        }
+      }
       .buttonDiv {
         display: flex;
         justify-content: center;
@@ -439,15 +562,6 @@ body {
           transition: 1s linear;
           background-color: green;
         }
-      }
-      .infoExit {
-        display: flex;
-        opacity: 50%;
-        left: auto;
-      }
-      .infoExit:hover {
-        cursor: pointer;
-        opacity: 100%;
       }
     }
 
