@@ -1,5 +1,6 @@
 // //exporting all consolidated schemas here
 import { GraphQLObjectType, GraphQLSchema } from 'graphql';
+import { GET_NFT } from './Queries_and_Mutations/NFT.ts';
 import {
   GET_USER,
   CREATE_USER,
@@ -9,6 +10,7 @@ const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
     getUser: GET_USER,
+    getNFT: GET_NFT
   },
 });
 

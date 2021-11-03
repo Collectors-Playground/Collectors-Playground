@@ -1,10 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { graphqlHTTP } from 'express-graphql';
-import { graphql, buildSchema } from 'graphql';
-import db from './models/CP';
-import bcrypt from 'bcryptjs';
 import { schema } from './Schema';
+import nftController from './controllers/nftController';
+import path from 'path';
 
 const app = express();
 app.use(express.json());
@@ -74,10 +73,8 @@ app.listen(3000, () => {
   console.log('Running on port 3000');
 });
 
-// const path = require('path');
 // const sessionController = require('./controllers/sessionController');
 // const cookieController = require('./controllers/cookieController');
-// const apiController = require('./controllers/apiController');
 
 // const express = require('express');
 

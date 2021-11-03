@@ -11,6 +11,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/index.jsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/index.jsx", "server/Schema/Queries_and_Mutations/NFT.ts"],
   "exclude": ["node_modules"]
 }
