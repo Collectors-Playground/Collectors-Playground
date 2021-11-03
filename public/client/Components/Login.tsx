@@ -49,21 +49,25 @@ function Login(props: LoginProps) {
 
   return (
     <div className="loginWrapper">
+      <div className="enterDiv">Enter the Playground</div>
       <form>
         <div className="usernamePasswordDiv">
-          <input
-            placeholder="username"
-            type="text"
-            required
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-
-          <input
-            placeholder="password"
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
+          <div className="username">
+            <input
+              placeholder="username"
+              type="text"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+            ></input>
+          </div>
+          <div className="password">
+            <input
+              placeholder="password"
+              type="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </div>
         </div>
 
         <div className="buttonsDiv">

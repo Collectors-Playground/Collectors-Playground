@@ -1,33 +1,52 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
+import React, { useEffect, useState } from 'react';
+import { Bar } from 'react-chartjs-2';
 
-const data = {
-  labels: ['1', '2', '3', '4', '5', '6'],
+const rand = () => Math.round(Math.random() * 20);
+
+const genData = () => ({
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      fill: false,
-      backgroundColor: 'rgb(255, 255, 255)',
-      borderColor: 'rgba(255, 99, 132, 0.2)',
+      label: 'Scale',
+      data: [rand(), rand(), rand(), rand(), rand(), rand()],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+      ],
+      borderWidth: 1,
     },
   ],
+});
+
+const Dynamic = () => {
+  const [data, setData] = useState(genData());
+
+  useEffect(() => {
+    const interval = setInterval(() => setData(genData()), 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="graph">
+      <div className="header">
+        <h1 className="title">Dynamic Bar Chart</h1>
+      </div>
+      <Bar data={data} />
+    </div>
+  );
 };
 
-const options = {
-  scales: {
-    y: {
-      beginAtZero: true,
-    },
-  },
-};
-
-const Graph = () => (
-  <div className="liveGraph">
-    <h1 className="title">Line Chart</h1>
-
-    <Line data={data} options={options} />
-  </div>
-);
-
-export default Graph;
+export default Dynamic;

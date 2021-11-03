@@ -13,3 +13,5 @@ export const UPDATE_BALANCE: string = 'UPDATE_BALANCE';
 export const UPDATE_CURRENT_NFT: string = 'UPDATE_CURRENT_NFT';
 
 export const NFT_TO_BUY: string = 'NFT_TO_BUY';
+
+export const POPULATE_NFT_LIST: string = 'POPULATE_NFT_LIST';

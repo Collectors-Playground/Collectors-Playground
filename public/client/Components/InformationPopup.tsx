@@ -7,7 +7,8 @@ import { InformationPopupProps } from '../../Types/interfaces';
 function InformationPopup(props: InformationPopupProps) {
   const {
     name,
-    cost,
+    image,
+    price,
     description,
     updateNFTToBuyDispatch,
     addNFTToPortfolioDispatch,
@@ -16,10 +17,10 @@ function InformationPopup(props: InformationPopupProps) {
     buyNFTDispatch,
   } = props;
 
-  const checkPurchase = (name: string, cost: number) => {
+  const checkPurchase = (name: string, price: number) => {
     const messageDiv = document.querySelector('#purchaseNFTErrorMessage');
 
-    if (cost > currentBalance) {
+    if (price > currentBalance) {
       messageDiv.innerHTML = 'You do not have enough ETH to purchase this NFT.';
       setTimeout(() => (messageDiv.innerHTML = ''), 3000);
       return;
@@ -27,7 +28,6 @@ function InformationPopup(props: InformationPopupProps) {
     for (let i = 0; i < currentPortfolio.length; i++) {
       const currentNFT = currentPortfolio[i];
 
-      console.log(currentNFT.name, name);
       if (currentNFT.name === name) {
         messageDiv.innerHTML =
           'You have already purchased this NFT. Please select another one to purchase.';
@@ -35,32 +35,46 @@ function InformationPopup(props: InformationPopupProps) {
         return;
       }
     }
-    addNFTToPortfolioDispatch(name, cost);
-    updateNFTToBuyDispatch('', '', 0);
-    buyNFTDispatch(cost);
+    addNFTToPortfolioDispatch(name, price, image, description);
+    updateNFTToBuyDispatch('', '', 0, '');
+    buyNFTDispatch(price);
     messageDiv.innerHTML = `Succesfully purchased the ${name} NFT! It is now in your portfolio`;
     setTimeout(() => (messageDiv.innerHTML = ''), 3000);
   };
 
   return (
-    <div className="descriptionAndCostCard">
+    <div className="descriptionAndPriceCard">
+      <div className="imageInfoAndExitWrapper">
+        <div className="spaceFill"></div>
+        <div className="imageInfo">
+          <img
+            src={`${image}`}
+            width={`${0.1 * window.innerWidth}`}
+            height={`${0.2 * window.innerHeight}`}
+          />
+        </div>
+        <div className="exitWrapper">
+          <div className="infoExit">
+            <FontAwesomeIcon
+              icon={faTimes}
+              onClick={() => {
+                updateNFTToBuyDispatch('', '', 0, '');
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
       <div>
+        <p>Name: {name}</p>
         <p>Description: {description}</p>
         <p>
-          Cost: {cost}{' '}
+          Price: {price}{' '}
           <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
         </p>
         <div className="buttonDiv">
-          <button onClick={() => checkPurchase(name, cost)}>Buy</button>
+          <button onClick={() => checkPurchase(name, price)}>Buy</button>
         </div>
-      </div>
-      <div className="infoExit">
-        <FontAwesomeIcon
-          icon={faTimes}
-          onClick={() => {
-            updateNFTToBuyDispatch('', '', 0);
-          }}
-        />
       </div>
     </div>
   );

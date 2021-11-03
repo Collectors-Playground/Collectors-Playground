@@ -1,5 +1,6 @@
 $darkBackground: #242b2e;
 $primaryLight: #4c5457;
+$primaryDark: #000003;
 $fontColor: whitesmoke;
 @import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 body {
@@ -9,89 +10,121 @@ body {
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+  overflow-x: hidden;
   .titleLoginWrapper {
     display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
     .title {
+      align-self: center;
+      font-size: 4rem;
       justify-content: center;
-      display: flex;
-      color: $fontColor;
-      text-align: center;
-      width: 60vw;
-    }
-    .loginWrapper {
       display: flex;
       flex-direction: column;
-      width: 20vw;
-      justify-content: center;
-
-      .usernamePasswordDiv {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        input {
-          width: 7vw;
-        }
-        input:focus {
-          outline: none;
-        }
-        margin-bottom: 1vh;
-      }
-      .buttonsDiv {
-        display: flex;
-        justify-content: space-evenly;
-        input {
-          border-radius: 0.25vw;
-          outline: none;
-          font-size: 1vw;
-          cursor: pointer;
-        }
-        #loginBtn {
-          background-color: rgb(64, 211, 64);
-          color: $fontColor;
-          border: solid rgb(138, 138, 194) 0.15vw;
-        }
-        #loginBtn:hover {
-          background-color: rgb(138, 138, 194);
-          color: $fontColor;
-          color: black;
-        }
-        #signUpButton {
-          background-color: rgb(138, 138, 194);
-          color: $fontColor;
-          border: solid rgb(64, 211, 64) 0.15vw;
-        }
-        #signUpButton:hover {
-          background-color: rgb(64, 211, 64);
-          color: $fontColor;
-          border: solid rgb(64, 211, 64) 0.15vw;
-        }
+      color: $fontColor;
+      text-align: center;
+      width: 80vw;
+      height: fit-content;
+      word-wrap: break-word;
+      h2 {
+        margin-top: -3vh;
+        font-style: italic;
+        font-size: 2rem;
       }
     }
   }
   .centralPageWrapper {
     display: flex;
     flex-direction: row;
-    border: solid yellow;
     height: 70vh;
     align-self: center;
-    width: 75%;
-    .carousel {
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+    .carouselLoginWrapper {
       display: flex;
-      width: 50%;
-      height: 25vh;
       align-self: center;
-    }
-    .liveGraph {
-      margin-left: auto;
-      border: solid blue;
-      width: 60vw;
-    }
-    .sidebar {
-      border: solid red;
-      width: 20vw;
+      width: 100%;
+      height: 70%;
+      justify-content: space-evenly;
+
+      .carousel {
+        display: flex;
+        width: 60%;
+        height: 100%;
+        align-self: center;
+      }
+      .loginWrapper {
+        color: $fontColor;
+        align-self: center;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 20vw;
+        height: 100%;
+        font-size: 2.5rem;
+        margin-top: -3vh;
+
+        .enterDiv {
+          width: 100%;
+          height: fit-content;
+        }
+
+        .usernamePasswordDiv {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          justify-content: space-evenly;
+
+          align-self: center;
+          height: 15vh;
+
+          margin-bottom: 1vh;
+          input {
+            width: 9vw;
+            height: 3vh;
+            border-radius: 0.5vw;
+          }
+          input:focus {
+            outline: none;
+          }
+          .username {
+            align-self: center;
+            width: 50%;
+            height: fit-content;
+          }
+          .password {
+            align-self: center;
+            width: 50%;
+            height: fit-content;
+          }
+        }
+        .buttonsDiv {
+          display: flex;
+          justify-content: space-evenly;
+          input {
+            width: 8vw;
+            height: 4vh;
+            border-radius: 0.25vw;
+            outline: none;
+            font-size: 1vw;
+            cursor: pointer;
+          }
+
+          input {
+            background-color: $primaryLight;
+            color: $fontColor;
+            border: $primaryLight 0.15vw;
+          }
+          input:hover {
+            background-color: green;
+            color: $fontColor;
+            color: black;
+          }
+        }
+      }
     }
   }
 }
@@ -99,7 +132,8 @@ body {
 .dashboardWrapper {
   color: $fontColor;
   height: 100%;
-  overflow-y: hidden;
+  overflow-y: auto;
+
   .topRowWrapper {
     display: flex;
     width: 100%;
@@ -166,7 +200,7 @@ body {
           .dropdownItemWrapper {
             display: flex;
             flex-direction: row;
-            font-size: 3rem;
+            font-size: 1.5rem;
             border: solid black;
             background-color: $primaryLight;
             border-radius: 1vw;
@@ -174,6 +208,7 @@ body {
             margin-bottom: 1vh;
             height: 25vh;
             width: 60%;
+            word-wrap: break-word;
 
             .nameSpan {
               width: 80%;
@@ -195,7 +230,7 @@ body {
       }
 
       .dropdownList::-webkit-scrollbar-track {
-        background-color: #e4e4e4;
+        background-color: $primaryDark;
         border-radius: 0.5vw;
       }
 
@@ -203,7 +238,7 @@ body {
         border-radius: 0.5vw;
         border: 0.15vw solid transparent;
         background-clip: content-box;
-        background-color: #9690b6;
+        background-color: $primaryLight;
       }
     }
     .dropdownButton {
@@ -234,6 +269,21 @@ body {
       opacity: 100%;
     }
   }
+}
+.dashboardWrapper::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.dashboardWrapper::-webkit-scrollbar-track {
+  background-color: $primaryDark;
+  border-radius: 0.5vw;
+}
+
+.dashboardWrapper::-webkit-scrollbar-thumb {
+  border-radius: 0.5vw;
+  border: 0.15vw solid transparent;
+  background-clip: content-box;
+  background-color: $primaryLight;
 }
 .mainContentWrapper {
   width: 100%;
@@ -289,13 +339,26 @@ body {
 
         .indivPortfolioItem {
           text-align: left;
-          font-size: 2rem;
+          font-size: 1.5rem;
           border: solid black;
           border-radius: 0.75vw;
           transition: 0.5s linear;
           padding: 2rem;
           margin-bottom: 1vh;
           background-color: $primaryLight;
+          .nameImageWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            .portfolioName {
+              align-self: flex-start;
+              margin-right: auto;
+              margin-top: auto;
+              width: fit-content;
+              height: fit-content;
+            }
+          }
 
           button {
             color: $fontColor;
@@ -318,13 +381,26 @@ body {
 
         .indivPortfolioItemSelected {
           text-align: left;
-          font-size: 2rem;
+          font-size: 1.5rem;
           border: solid black;
           border-radius: 0.75vw;
           background-color: rgba(56, 144, 56, 0.541);
           transition: 0.25s linear;
           padding: 2rem;
           margin-bottom: 1vh;
+          .nameImageWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            .portfolioName {
+              align-self: flex-start;
+              margin-right: auto;
+              margin-top: auto;
+              width: fit-content;
+              height: fit-content;
+            }
+          }
 
           button {
             color: $fontColor;
@@ -351,7 +427,7 @@ body {
     }
 
     .portfolioWrapper::-webkit-scrollbar-track {
-      background-color: #e4e4e4;
+      background-color: $primaryDark;
       border-radius: 0.5vw;
     }
 
@@ -359,15 +435,67 @@ body {
       border-radius: 0.5vw;
       border: 0.15vw solid transparent;
       background-clip: content-box;
-      background-color: #9690b6;
+      background-color: $primaryLight;
     }
   }
-  .NFTTimeline {
+  .currentNFTWrapper {
     width: 100%;
-    border: solid gold;
     margin-top: 1vh;
-    height: 80%;
+    height: 90%;
     margin-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    .imageAndDescriptionWrapper {
+      display: flex;
+      width: 100%;
+      height: 50%;
+      .currentNFTImage {
+        width: 50%;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        .NFTimage {
+          display: flex;
+          width: 80%;
+          height: fit-content;
+          align-self: center;
+          justify-content: center;
+        }
+      }
+      .currentNFTDescriptionNameWrapper {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        justify-content: space-evenly;
+        .currentNFTName {
+          width: fit-content;
+          height: fit-content;
+          align-self: center;
+          text-decoration: underline;
+          font-style: italic;
+        }
+        .currentNFTDescription {
+          margin-top: 1vh;
+          height: 100%;
+          width: 100%;
+          align-content: center;
+        }
+      }
+    }
+    .graphContainer {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .graph {
+        width: 70%;
+        height: fit-content;
+        align-self: center;
+      }
+    }
   }
 
   .descriptionAndCostWrapper {
@@ -378,18 +506,51 @@ body {
     margin-right: auto;
     margin-top: 1vh;
 
-    .descriptionAndCostCard {
-      font-size: 3rem;
+    .descriptionAndPriceCard {
+      font-size: 1.5rem;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-content: center;
       border: solid $primaryLight;
       border-radius: 1vw;
       padding: 2rem;
-      height: 35vh;
+      height: fit-content;
       width: 80%;
-      margin: auto;
 
+      .imageInfoAndExitWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .spaceFill {
+          width: 25%;
+          height: 100%;
+        }
+        .imageInfo {
+          width: fit-content;
+          height: fit-content;
+          align-self: center;
+        }
+
+        .exitWrapper {
+          display: flex;
+          flex-direction: row;
+          align-self: flex-end;
+          justify-content: flex-end;
+          height: 100%;
+          width: 25%;
+          .infoExit {
+            font-size: 4rem;
+            opacity: 50%;
+            margin-bottom: auto;
+            margin-left: auto;
+          }
+          .infoExit:hover {
+            cursor: pointer;
+            opacity: 100%;
+          }
+        }
+      }
       .buttonDiv {
         display: flex;
         justify-content: center;
@@ -407,15 +568,6 @@ body {
           transition: 1s linear;
           background-color: green;
         }
-      }
-      .infoExit {
-        display: flex;
-        opacity: 50%;
-        left: auto;
-      }
-      .infoExit:hover {
-        cursor: pointer;
-        opacity: 100%;
       }
     }
 

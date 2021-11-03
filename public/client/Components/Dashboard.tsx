@@ -4,14 +4,15 @@ import Leaderboard from './Leaderboard';
 import Dropdown from './Dropdown';
 import Portfolio from './Portfolio';
 import InformationPopup from './InformationPopup';
+import SelectedNFT from './SelectedNFT';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import {
   GlobalState,
   dashboardProps,
   LeaderboardProps,
   portfolioInt,
-  NFTListInt,
 } from '../../Types/interfaces';
 import {
   SELL_FROM_PORTFOLIO,
@@ -31,6 +32,7 @@ function Dashboard(props: dashboardProps) {
     addNFTToPortfolioDispatch,
     buyNFTDispatch,
   } = props;
+  const history = useHistory();
 
   const createLeaderboard = (leaderList: LeaderboardProps[]) => {
     const leaderListOut: ReactElement[] = leaderList.map((user, index) => {
@@ -52,7 +54,9 @@ function Dashboard(props: dashboardProps) {
         <Portfolio
           key={index}
           name={item.name}
+          image={item.image}
           boughtPrice={item.boughtPrice}
+          description={item.description}
           sellPrice={item.sellPrice}
           sellNFT={sellPortfolioDispatch}
           currentNFT={dashboard.currentNFT}
@@ -72,7 +76,9 @@ function Dashboard(props: dashboardProps) {
           updateNFTToBuyDispatch={updateNFTToBuyDispatch}
         />
         <div className="logoutWrapper">
-          <span className="logout">Logout </span>
+          <span className="logout" onClick={() => history.replace('/')}>
+            Logout{' '}
+          </span>
         </div>
       </div>
       <div className="mainContentWrapper">
@@ -88,13 +94,20 @@ function Dashboard(props: dashboardProps) {
             </div>
           </div>
         </div>
-        <div className="NFTTimeline">{dashboard.currentNFT}</div>
+
+        <SelectedNFT
+          name={dashboard.currentNFT.name}
+          image={dashboard.currentNFT.image}
+          description={dashboard.currentNFT.description}
+        />
+
         <div className="descriptionAndCostWrapper">
           {dashboard.NFTToBuy.name !== '' && (
             <InformationPopup
               name={dashboard.NFTToBuy.name}
               description={dashboard.NFTToBuy.description}
-              cost={dashboard.NFTToBuy.cost}
+              price={dashboard.NFTToBuy.price}
+              image={dashboard.NFTToBuy.image}
               updateNFTToBuyDispatch={updateNFTToBuyDispatch}
               addNFTToPortfolioDispatch={addNFTToPortfolioDispatch}
               currentPortfolio={dashboard.portfolioList}
@@ -117,19 +130,39 @@ export default connect(
   (dispatch) => ({
     sellPortfolioDispatch: (NFT: string) =>
       dispatch({ type: SELL_FROM_PORTFOLIO, payload: NFT }),
-    updateCurrentNFTDispatch: (NFT: string) =>
-      dispatch({ type: UPDATE_CURRENT_NFT, payload: NFT }),
-    updateNFTToBuyDispatch: (name: string, description: string, cost: number) =>
-      dispatch({ type: NFT_TO_BUY, payload: { name, description, cost } }),
-    addNFTToPortfolioDispatch: (name: string, cost: number) =>
+    updateCurrentNFTDispatch: (
+      name: string,
+      image: string,
+      description: string
+    ) =>
+      dispatch({
+        type: UPDATE_CURRENT_NFT,
+        payload: { name, image, description },
+      }),
+    updateNFTToBuyDispatch: (
+      name: string,
+      description: string,
+      price: number,
+      image: string
+    ) =>
+      dispatch({
+        type: NFT_TO_BUY,
+        payload: { name, description, price, image },
+      }),
+    addNFTToPortfolioDispatch: (
+      name: string,
+      price: number,
+      image: string,
+      description: string
+    ) =>
       dispatch({
         type: ADD_TO_PORTFOLIO,
-        payload: { name, cost },
+        payload: { name, price, image, description },
       }),
-    buyNFTDispatch: (cost: number) =>
+    buyNFTDispatch: (price: number) =>
       dispatch({
         type: UPDATE_BALANCE,
-        payload: cost,
+        payload: price,
       }),
   })
 )(Dashboard);

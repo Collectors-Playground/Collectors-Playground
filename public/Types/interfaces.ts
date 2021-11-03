@@ -17,14 +17,29 @@ export interface dashboardProps {
   username: string;
   dashboard: dashboardStateInt;
   sellPortfolioDispatch: (NFT: string) => void;
-  updateCurrentNFTDispatch: (NFT: string) => void;
+  updateCurrentNFTDispatch: (
+    name: string,
+    image: string,
+    description: string
+  ) => void;
   updateNFTToBuyDispatch: (
     name: string,
     description: string,
-    cost: number
+    price: number,
+    image: string
   ) => void;
-  addNFTToPortfolioDispatch: (name: string, cost: number) => void;
-  buyNFTDispatch: (cost: number) => void;
+  addNFTToPortfolioDispatch: (
+    name: string,
+    price: number,
+    image: string,
+    description: string
+  ) => void;
+  buyNFTDispatch: (price: number) => void;
+}
+
+export interface HomeProps {
+  dashboard: dashboardStateInt;
+  populateNFTListDispatch: (fetchedList: NFTListInt[]) => void;
 }
 
 export interface LeaderboardProps {
@@ -37,14 +52,22 @@ export interface portfolioInt {
   name: string;
   boughtPrice: number;
   sellPrice: number;
+  image: string;
+  description: string;
   sellNFT?: (NFT: string) => void;
-  updateCurrentNFT?: (NFT: string) => void;
-  currentNFT?: string;
+  updateCurrentNFT?: (name: string, image: string, description: string) => void;
+  currentNFT?: currentNFTInt;
+}
+
+export interface currentNFTInt {
+  name: string;
+  image: string;
+  description: string;
 }
 
 export interface dashboardStateInt {
   portfolioList: portfolioInt[];
-  currentNFT: string;
+  currentNFT: currentNFTInt;
   balance: number;
   leaderboard: leaderboardInt[];
   NFTList: NFTListInt[];
@@ -52,43 +75,63 @@ export interface dashboardStateInt {
 }
 
 export interface InformationPopupProps {
-  name: string;
-  description: string;
-  cost: number;
+  id?: number;
+  token_id?: string;
+  contract_name?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  image?: string;
   currentPortfolio: portfolioInt[];
   currentBalance: number;
   updateNFTToBuyDispatch: (
     name: string,
     description: string,
-    cost: number
+    price: number,
+    image: string
   ) => void;
-  buyNFTDispatch: (cost: number) => void;
-  addNFTToPortfolioDispatch: (name: string, cost: number) => void;
+  buyNFTDispatch: (price: number) => void;
+  addNFTToPortfolioDispatch: (
+    name: string,
+    price: number,
+    image: string,
+    description: string
+  ) => void;
 }
 export interface DropdownProps {
   NFTList: NFTListInt[];
   updateNFTToBuyDispatch: (
     name: string,
     description: string,
-    cost: number
+    price: number,
+    image: string
   ) => void;
 }
 
 export interface DropdownItemProps {
-  name: string;
-  description: string;
-  cost: number;
+  id?: number;
+  token_id?: string;
+  contract_name?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  image?: string;
   updateNFTToBuyDispatch: (
-    name: string,
+    usedName: string,
     description: string,
-    cost: number
+    price: number,
+    image: string
   ) => void;
 }
 
 export interface NFTListInt {
-  name: string;
-  description: string;
-  cost: number;
+  id?: number;
+  token_id?: string;
+  contract_name?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  image?: string;
 }
 export interface leaderboardInt {
   username: string;
