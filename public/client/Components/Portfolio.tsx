@@ -1,5 +1,7 @@
 import React from 'react';
 import { portfolioInt } from '../../Types/interfaces';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEthereum } from '@fortawesome/free-brands-svg-icons';
 
 function Portfolio(props: portfolioInt) {
   const {
@@ -20,8 +22,14 @@ function Portfolio(props: portfolioInt) {
       onClick={() => updateCurrentNFT(name)}
     >
       <div>Name: {name}</div>
-      <div>Bought at: {boughtPrice}</div>
-      <div>Current Sell Price: {sellPrice}</div>
+      <div>
+        Bought at: {boughtPrice}{' '}
+        <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
+      </div>
+      <div>
+        Current Sell Price: {sellPrice}{' '}
+        <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
+      </div>
       <button id={name} onClick={() => sellNFT(name)}>
         {' '}
         Sell

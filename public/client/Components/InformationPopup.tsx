@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEthereum } from '@fortawesome/free-brands-svg-icons';
 import { InformationPopupProps } from '../../Types/interfaces';
 
 function InformationPopup(props: InformationPopupProps) {
@@ -45,7 +46,10 @@ function InformationPopup(props: InformationPopupProps) {
     <div className="descriptionAndCostCard">
       <div>
         <p>Description: {description}</p>
-        <p>Cost: {cost} eth</p>
+        <p>
+          Cost: {cost}{' '}
+          <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
+        </p>
         <div className="buttonDiv">
           <button onClick={() => checkPurchase(name, cost)}>Buy</button>
         </div>

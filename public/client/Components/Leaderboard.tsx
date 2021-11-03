@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
+import { faEthereum } from '@fortawesome/free-brands-svg-icons';
 import { LeaderboardProps } from '../../Types/interfaces';
 
 export default function Leaderboard(props: LeaderboardProps) {
@@ -28,7 +29,10 @@ export default function Leaderboard(props: LeaderboardProps) {
       <div className="leaderUser" style={{ color }}>
         {username}
       </div>
-      <div style={{ color }}>{balance}</div>
+      <div style={{ color }}>
+        {balance}{' '}
+        <FontAwesomeIcon icon={faEthereum} style={{ color: 'black' }} />
+      </div>
     </div>
   );
 }

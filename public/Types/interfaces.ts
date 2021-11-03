@@ -96,6 +96,7 @@ export interface leaderboardInt {
 }
 export interface BalanceProps {
   currentBalance: number;
+  username: string;
 }
 
 export interface LoginProps {

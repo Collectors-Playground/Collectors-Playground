@@ -96,14 +96,35 @@ body {
     height: 8vh;
     justify-content: space-between;
     .balanceWrapper {
+      display: flex;
+      flex-direction: row;
       font-size: 2rem;
-      border: solid yellow;
+      border: solid $primaryLight;
+      border-radius: 1vw;
       width: 23%;
       height: 100%;
-      text-align: center;
+
+      .userWelcome {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+        height: 50%;
+        align-self: center;
+      }
+      .balance {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        width: 50%;
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+      }
     }
     .dropdownWrapper {
-      border: solid red;
       width: 45%;
       height: 100%;
       display: flex;
@@ -119,7 +140,6 @@ body {
         justify-content: center;
         align-content: center;
         align-items: center;
-        border: solid blue;
         .dropdownList {
           position: fixed;
           left: 50.75%;
@@ -132,17 +152,18 @@ body {
 
           overflow-y: auto;
           overflow-x: hidden;
-          border: solid green;
 
           .dropdownItemWrapper {
             display: flex;
             flex-direction: row;
             font-size: 3rem;
-            border: solid maroon;
-            padding: 2.5rem;
+            border: solid black;
+            background-color: $primaryLight;
+            border-radius: 1vw;
+            padding: 1.5rem;
             margin-bottom: 1vh;
             height: 25vh;
-            width: 100%;
+            width: 60%;
 
             .nameSpan {
               width: 80%;
@@ -213,7 +234,6 @@ body {
     flex-direction: column;
     width: 30%;
     height: 100%;
-    border: solid blue;
     .leaderboardWrapper {
       display: flex;
       flex-direction: column;
@@ -222,6 +242,7 @@ body {
       height: 40vh;
       text-align: center;
       font-size: 3rem;
+      margin-top: 1vh;
       .individualLeader {
         display: flex;
         font-size: 2rem;
@@ -232,6 +253,7 @@ body {
         margin-bottom: 1vh;
         justify-content: space-between;
         padding: 1.5rem;
+
         .leaderUser {
           font-style: italic;
         }
@@ -247,7 +269,6 @@ body {
       justify-content: space-evenly;
       overflow-x: hidden;
       overflow-y: auto;
-      border: solid red;
       .portfolioTitle {
         height: 1vh;
         margin-top: -3vh;
@@ -258,19 +279,20 @@ body {
         .indivPortfolioItem {
           text-align: left;
           font-size: 2rem;
-          border: solid magenta;
+          border: solid black;
           border-radius: 0.75vw;
           transition: 0.5s linear;
           padding: 2rem;
           margin-bottom: 1vh;
+          background-color: $primaryLight;
 
           button {
             color: $fontColor;
             font-size: 2rem;
-            width: 7vw;
+            width: 5vw;
             height: 3vh;
             border-radius: 1vw;
-            border: solid green;
+            border: solid black;
             background-color: transparent;
           }
           button:hover {
@@ -286,7 +308,7 @@ body {
         .indivPortfolioItemSelected {
           text-align: left;
           font-size: 2rem;
-          border: solid magenta;
+          border: solid black;
           border-radius: 0.75vw;
           background-color: rgba(56, 144, 56, 0.541);
           transition: 0.25s linear;
@@ -296,10 +318,10 @@ body {
           button {
             color: $fontColor;
             font-size: 2rem;
-            width: 7vw;
+            width: 5vw;
             height: 3vh;
             border-radius: 1vw;
-            border: solid green;
+            border: solid black;
             background-color: transparent;
           }
           button:hover {
@@ -312,26 +334,27 @@ body {
           cursor: pointer;
         }
       }
-      .portfolioWrapper::-webkit-scrollbar {
-        width: 0.5vw;
-      }
+    }
+    .portfolioWrapper::-webkit-scrollbar {
+      width: 0.5vw;
+    }
 
-      .portfolioWrapper::-webkit-scrollbar-track {
-        background-color: #e4e4e4;
-        border-radius: 0.5vw;
-      }
+    .portfolioWrapper::-webkit-scrollbar-track {
+      background-color: #e4e4e4;
+      border-radius: 0.5vw;
+    }
 
-      .portfolioWrapper::-webkit-scrollbar-thumb {
-        border-radius: 0.5vw;
-        border: 0.15vw solid transparent;
-        background-clip: content-box;
-        background-color: #9690b6;
-      }
+    .portfolioWrapper::-webkit-scrollbar-thumb {
+      border-radius: 0.5vw;
+      border: 0.15vw solid transparent;
+      background-clip: content-box;
+      background-color: #9690b6;
     }
   }
   .NFTTimeline {
     width: 100%;
     border: solid gold;
+    margin-top: 1vh;
   }
 
   .descriptionAndCostWrapper {
@@ -340,14 +363,14 @@ body {
     width: 43.5%;
     height: 100%;
     margin-right: auto;
-    border: solid yellow;
+    margin-top: 1vh;
 
     .descriptionAndCostCard {
       font-size: 3rem;
       display: flex;
       justify-content: center;
       align-content: center;
-      border: solid red;
+      border: solid $primaryLight;
       border-radius: 1vw;
       padding: 2rem;
       height: 35vh;

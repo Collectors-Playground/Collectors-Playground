@@ -28,7 +28,12 @@ function Dropdown(props: DropdownProps) {
       <div className="dropdown">
         Press the dropdown button to view available NFTs for purchase.
         {dropdownDisplay && (
-          <div className="dropdownList">{createNFTPurchaseList(NFTList)}</div>
+          <div
+            className="dropdownList"
+            onMouseLeave={() => changeDropdownDisplay(!dropdownDisplay)}
+          >
+            {createNFTPurchaseList(NFTList)}
+          </div>
         )}
       </div>
       <div

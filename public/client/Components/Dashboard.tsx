@@ -66,7 +66,7 @@ function Dashboard(props: dashboardProps) {
   return (
     <div className="dashboardWrapper">
       <div className="topRowWrapper">
-        <Balance currentBalance={dashboard.balance} />
+        <Balance currentBalance={dashboard.balance} username={username} />
         <Dropdown
           NFTList={dashboard.NFTList}
           updateNFTToBuyDispatch={updateNFTToBuyDispatch}
