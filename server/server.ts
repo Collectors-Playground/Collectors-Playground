@@ -1,4 +1,4 @@
-import express, { Application, Request, Response, NextFunction } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import bodyParser from 'body-parser';
 import { graphqlHTTP } from 'express-graphql';
 import { schema } from './Schema';
@@ -58,6 +58,8 @@ app.use(
   })
 );
 
+routes(app);
+
 app.use('/*', (req: Request, res: Response) => {
   res
     .status(404)
@@ -75,7 +77,8 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
+
+
 app.listen(3000, () => {
   console.log('Running on port 3000');
-  routes(app);
 });

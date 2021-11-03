@@ -6,7 +6,7 @@ const nftController: any = {};
 nftController.getNFTs = (req: Request, res: Response, next: NextFunction) => {
   const options: any = {
     method: 'GET',
-    url: 'https://api.opensea.io/api/v1/assets?order_by=sale_price&order_direction=desc&offset=0&limit=1&collection=boredapeyachtclub',
+    url: 'https://api.opensea.io/api/v1/assets?order_by=sale_price&order_direction=desc&offset=0&limit=50&collection=boredapeyachtclub',
   };
   axios
     .request(options)
