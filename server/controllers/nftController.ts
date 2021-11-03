@@ -1,9 +1,10 @@
-const axios = require('axios');
+import axios from 'axios';
+import { Request, Response, NextFunction, Errback } from 'express';
 
-const nftController = {};
+const nftController: any = {};
 
-nftController.getNFTs = (req, res, next) => {
-  const options = {
+nftController.getNFTs = (req: Request, res: Response, next: NextFunction) => {
+  const options: any = {
     method: 'GET',
     url: 'https://api.opensea.io/api/v1/assets?order_by=sale_price&order_direction=desc&offset=0&limit=50&collection=boredapeyachtclub',
   };
@@ -12,7 +13,7 @@ nftController.getNFTs = (req, res, next) => {
     .then((response) => {
       const listNFT = [];
       for (let i = 0; i < response.data.assets.length; i++) {
-        const nft = {};
+        const nft: any = {};
         nft.id = response.data.assets[i].id;
         nft.token_id = response.data.assets[i].token_id;
         nft.contract_name = response.data.assets[i].asset_contract.name;
@@ -22,18 +23,28 @@ nftController.getNFTs = (req, res, next) => {
         nft.description = response.data.assets[i].collection.description;
         nft.image = response.data.assets[i].image_url;
         listNFT.push(nft);
-      };
+      }
       res.locals.nfts = listNFT;
-    });
+      return next();
+    })
     .catch((error) => {
       console.error(error);
     });
 };
 
-nftController.buyAllNFT = (req, res, next) => {};
+nftController.buyAllNFT = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
 
-nftController.sellAllNFT = (req, res, next) => {};
+nftController.sellAllNFT = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {};
 
+export default nftController;
 // const API_KEY = 'BQY6DXBkV5RuHO6j9oOORkW5wiLdm6Wu';
 // const url_endpoint = 'https://graphql.bitquery.io/';
 // const query = `
