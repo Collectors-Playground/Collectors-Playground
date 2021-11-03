@@ -9,4 +9,27 @@ export default function (app: Express) {
       .setHeader('content-type', 'application/json')
       .json(res.locals.nfts);
   });
+
+  app.post(
+    '/getNFTs',
+    nftController.userNFTs,
+    (req: Request, res: Response) => {
+      res
+        .status(200)
+        .setHeader('content-type', 'application/json')
+        .json(res.locals.getUserNFTs);
+    }
+  );
+
+  app.post(
+    '/sellNFTs',
+    nftController.sellNFTs,
+    (req: Request, res: Response) => {
+      res.status(200).json(res.locals.infoAfterSell);
+    }
+  );
+
+  app.post('/buyNFTs', nftController.buyNFTs, (req: Request, res: Response) => {
+    res.status(200).json(res.locals.infoAfterBuy);
+  });
 }
