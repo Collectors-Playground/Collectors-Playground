@@ -2,7 +2,7 @@ import { UPDATE_USERNAME } from '../constants/actionTypes';
 import { DispatchLogin } from '../../Types/interfaces';
 
 const userState = {
-  username: 'test',
+  username: 'Username',
 };
 
 const userReducer = (state = userState, action: DispatchLogin) => {
