@@ -30,7 +30,7 @@ function Dropdown(props: DropdownProps) {
   return (
     <div className="dropdownWrapper">
       <div className="dropdown">
-        Press the dropdown button to view available NFTs for purchase.
+        Press the dropdown button to view available NFTs for purchase
         {dropdownDisplay && (
           <div
             className="dropdownList"

@@ -42,11 +42,11 @@ const dashboardState: dashboardStateInt = {
     description:
       'cat, (Felis catus), also called house cat or domestic cat, domesticated member of the family Felidae, order Carnivora, and the smallest member of that family. Like all felids, domestic cats are characterized by supple low-slung bodies, finely molded heads, long tails that aid in balance, and specialized teeth and claws that adapt them admirably to a life of active hunting. Cats possess other features of their wild relatives in being basically carnivorous, remarkably agile and powerful, and finely coordinated in movement.',
   },
-  balance: 10000,
+  balance: 500,
   leaderboard: [
-    { username: 'Person1', balance: 300 },
-    { username: 'Person2', balance: 200 },
-    { username: 'Person3', balance: 100 },
+    { username: '28 Diff', balance: 300 },
+    { username: 'Brian Kim', balance: 200 },
+    { username: 'West Islip', balance: 100 },
   ],
   NFTList: [
     // {

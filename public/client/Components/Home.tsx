@@ -30,34 +30,34 @@ function Home(props: HomeProps) {
       });
   }, []);
   return (
-    <Dashboard />
-    // <div className="mainPageWrapper">
-    //   <div className="titleLoginWrapper">
-    //     <div className="title">
-    //       <h1>Collector's Playground</h1>
-    //       <h2>The Only Open Source NFT Trading Sandbox</h2>
-    //     </div>
-    //   </div>
-    //   <div className="centralPageWrapper">
-    //     <div className="carouselLoginWrapper">
-    //       <div className="carousel">
-    //         <AliceCarousel
-    //           autoPlay
-    //           infinite
-    //           autoPlayInterval={1500}
-    //           autoHeight={true}
-    //           autoWidth={true}
-    //           autoPlayStrategy="none"
-    //           items={NFTImages}
-    //           disableButtonsControls={true}
-    //           renderDotsItem={() => false}
-    //           activeIndex={Math.floor(Math.random() * NFTImages.length + 1)}
-    //         ></AliceCarousel>
-    //       </div>
-    //       <Login />
-    //     </div>
-    //   </div>
-    // </div>
+    // <Dashboard />
+    <div className="mainPageWrapper">
+      <div className="titleLoginWrapper">
+        <div className="title">
+          <h1>Collector's Playground</h1>
+          <h2>The Only Open Source NFT Trading Sandbox</h2>
+        </div>
+      </div>
+      <div className="centralPageWrapper">
+        <div className="carouselLoginWrapper">
+          <div className="carousel">
+            <AliceCarousel
+              autoPlay
+              infinite
+              autoPlayInterval={1500}
+              autoHeight={true}
+              autoWidth={true}
+              autoPlayStrategy="none"
+              items={NFTImages}
+              disableButtonsControls={true}
+              renderDotsItem={() => false}
+              activeIndex={Math.floor(Math.random() * NFTImages.length + 1)}
+            ></AliceCarousel>
+          </div>
+          <Login />
+        </div>
+      </div>
+    </div>
   );
 }
 
