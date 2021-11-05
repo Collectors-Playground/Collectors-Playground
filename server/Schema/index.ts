@@ -1,18 +1,22 @@
-// //exporting all consolidated schemas here
-import { GraphQLObjectType, GraphQLSchema } from 'graphql';
 import {
-  GET_USER,
-  CREATE_USER,
-} from './Queries_and_Mutations/User';
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+  GraphQLInt,
+  GraphQLNonNull,
+} from 'graphql';
+import { GET_ALL_NFTS_FROM_API } from './Queries/NFT';
+import { CREATE_USER } from './Mutations/User';
 
-const RootQuery = new GraphQLObjectType({
+export const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
-    getUser: GET_USER,
+    getAllNFTs: GET_ALL_NFTS_FROM_API,
   },
 });
 
-const Mutation = new GraphQLObjectType({
+export const Mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     createUser: CREATE_USER,
