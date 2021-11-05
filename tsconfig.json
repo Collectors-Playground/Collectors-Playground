@@ -2,14 +2,15 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
-    "module": "es6",
-    "target": "es5",
+    "module": "commonjs",
+    "target": "es6",
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
     "sourceMap": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
   "include": ["**/*.ts", "**/*.tsx", "src/index.jsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "package-lock.json"]
 }

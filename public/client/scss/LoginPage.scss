@@ -1,126 +1,581 @@
+$darkBackground: #242b2e;
+$primaryLight: #4c5457;
+$primaryDark: #000003;
+$fontColor: whitesmoke;
+@import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 body {
-  background-color: #eef1f2;
-  background-image: url("https://cdn.pixabay.com/photo/2019/04/10/11/56/watercolour-4116932__340.png");
-  background-repeat: no-repeat;
-  background-width: 80%;
-  background-position-x: center;
-  margin: 0px;
+  background-color: $darkBackground;
 }
-
-.loginWrapper {
-  margin-top: 40px;
-  text-align: center;
+.mainPageWrapper {
   display: flex;
   flex-direction: column;
-}
-//the title!
-h1 {
-  font-family: $fontTitle;
-  font-size: 60px;
-  color: #1d465c;
-  margin-bottom: 40px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  .titleLoginWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      align-self: center;
+      font-size: 4rem;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      color: $fontColor;
+      text-align: center;
+      width: 80vw;
+      height: fit-content;
+      word-wrap: break-word;
+      h2 {
+        margin-top: -3vh;
+        font-style: italic;
+        font-size: 2rem;
+      }
+    }
+  }
+  .centralPageWrapper {
+    display: flex;
+    flex-direction: row;
+    height: 70vh;
+    align-self: center;
+    justify-content: center;
+    align-content: center;
+    width: 70%;
+    .carouselLoginWrapper {
+      display: flex;
+      align-self: center;
+      width: 100%;
+      height: 70%;
+      justify-content: space-evenly;
+
+      .carousel {
+        display: flex;
+        width: 60%;
+        height: 100%;
+        align-self: center;
+      }
+      .loginWrapper {
+        color: $fontColor;
+        align-self: center;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 20vw;
+        height: 100%;
+        font-size: 2.5rem;
+        margin-top: -3vh;
+
+        .enterDiv {
+          width: 100%;
+          height: fit-content;
+        }
+
+        .usernamePasswordDiv {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
+          justify-content: space-evenly;
+
+          align-self: center;
+          height: 15vh;
+
+          margin-bottom: 1vh;
+          input {
+            width: 9vw;
+            height: 3vh;
+            border-radius: 0.5vw;
+          }
+          input:focus {
+            outline: none;
+          }
+          .username {
+            align-self: center;
+            width: 50%;
+            height: fit-content;
+          }
+          .password {
+            align-self: center;
+            width: 50%;
+            height: fit-content;
+          }
+        }
+        .buttonsDiv {
+          display: flex;
+          justify-content: space-evenly;
+          input {
+            width: 8vw;
+            height: 4vh;
+            border-radius: 0.25vw;
+            outline: none;
+            font-size: 1vw;
+            cursor: pointer;
+          }
+
+          input {
+            background-color: $primaryLight;
+            color: $fontColor;
+            border: $primaryLight 0.15vw;
+          }
+          input:hover {
+            background-color: green;
+            color: $fontColor;
+            color: black;
+          }
+        }
+      }
+    }
+  }
 }
 
-#inputButtonWrapper {
+.dashboardWrapper {
+  color: $fontColor;
+  height: 100%;
+  overflow-y: auto;
+
+  .topRowWrapper {
+    display: flex;
+    width: 100%;
+    height: 8vh;
+    justify-content: space-between;
+    .balanceWrapper {
+      display: flex;
+      flex-direction: row;
+      font-size: 2rem;
+      border: solid $primaryLight;
+      border-radius: 1vw;
+      width: 23%;
+      height: 100%;
+
+      .userWelcome {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        align-content: center;
+        justify-content: center;
+        text-align: center;
+        height: 50%;
+        align-self: center;
+      }
+      .balance {
+        display: flex;
+        flex-direction: column;
+        height: 50%;
+        width: 50%;
+        text-align: center;
+        justify-content: center;
+        align-self: center;
+      }
+    }
+    .dropdownWrapper {
+      width: 45%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: 3rem;
+      .dropdown {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        .dropdownList {
+          position: fixed;
+          left: 50.75%;
+          top: 8vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 20%;
+          height: 25vh;
+
+          overflow-y: auto;
+          overflow-x: hidden;
+
+          .dropdownItemWrapper {
+            display: flex;
+            flex-direction: row;
+            font-size: 1.5rem;
+            border: solid black;
+            background-color: $primaryLight;
+            border-radius: 1vw;
+            padding: 1.5rem;
+            margin-bottom: 1vh;
+            height: 25vh;
+            width: 60%;
+            word-wrap: break-word;
+
+            .nameSpan {
+              width: 80%;
+            }
+            .extraInfoArrow {
+              width: fit-content;
+              margin-left: 1vw;
+              opacity: 50%;
+            }
+            .extraInfoArrow:hover {
+              cursor: pointer;
+              opacity: 100%;
+            }
+          }
+        }
+      }
+      .dropdownList::-webkit-scrollbar {
+        width: 0.5vw;
+      }
+
+      .dropdownList::-webkit-scrollbar-track {
+        background-color: $primaryDark;
+        border-radius: 0.5vw;
+      }
+
+      .dropdownList::-webkit-scrollbar-thumb {
+        border-radius: 0.5vw;
+        border: 0.15vw solid transparent;
+        background-clip: content-box;
+        background-color: $primaryLight;
+      }
+    }
+    .dropdownButton {
+      cursor: pointer;
+      width: fit-content;
+      opacity: 50%;
+      font-size: 5rem;
+    }
+    .dropdownButton:hover {
+      opacity: 100%;
+    }
+  }
+  .logoutWrapper {
+    display: flex;
+    font-size: 3rem;
+    text-align: center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    .logout {
+      text-decoration: underline;
+      opacity: 50%;
+      height: fit-content;
+      width: fit-content;
+    }
+    .logout:hover {
+      cursor: pointer;
+      opacity: 100%;
+    }
+  }
+}
+.dashboardWrapper::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+.dashboardWrapper::-webkit-scrollbar-track {
+  background-color: $primaryDark;
+  border-radius: 0.5vw;
+}
+
+.dashboardWrapper::-webkit-scrollbar-thumb {
+  border-radius: 0.5vw;
+  border: 0.15vw solid transparent;
+  background-clip: content-box;
+  background-color: $primaryLight;
+}
+.mainContentWrapper {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  margin-bottom: 20px;
-}
+  .leaderboardPortfolioWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    margin-left: 2vw;
+    .leaderboardWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 40vh;
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 1vh;
+      .individualLeader {
+        display: flex;
+        font-size: 2rem;
+        width: 80%;
+        height: 3vh;
+        border: solid blue;
+        border-radius: 0.75vw;
+        margin-bottom: 1vh;
+        justify-content: space-between;
+        padding: 1.5rem;
 
-#username {
-  border-radius: 4px;
-  border: 2px solid transparent;
-  height: 30px;
-  width: 160px;
-  background-color: rgb(252, 252, 250);
-}
-#password {
-  border-radius: 4px;
-  border: 2px solid transparent;
-  height: 30px;
-  width: 160px;
-  background-color: rgb(252, 252, 250);
-}
-//forgot password and log in button wrapper
-#buttonsDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
+        .leaderUser {
+          font-style: italic;
+        }
+      }
+    }
 
-#forgotPassword {
-  color: #1d465c;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12px;
-  background-color: transparent;
-  border-color: transparent;
-}
+    .portfolioWrapper {
+      height: 100%;
+      font-size: 3rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      overflow-x: hidden;
+      overflow-y: auto;
+      .portfolioTitle {
+        height: 1vh;
+        margin-top: -3vh;
+      }
+      .portfolioList {
+        height: 60vh;
 
-#loginBtn {
-  border-radius: 4px;
-  background-color: #1d465c;
-  border: 0px solid transparent;
-  width: 70px;
-  height: 40px;
-  font-size: 15px;
-  font-family: $buttonsFont;
-  color: #e6ebee;
-}
+        .indivPortfolioItem {
+          text-align: left;
+          font-size: 1.5rem;
+          border: solid black;
+          border-radius: 0.75vw;
+          transition: 0.5s linear;
+          padding: 2rem;
+          margin-bottom: 1vh;
+          background-color: $primaryLight;
+          .nameImageWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            .portfolioName {
+              align-self: flex-start;
+              margin-right: auto;
+              margin-top: auto;
+              width: fit-content;
+              height: fit-content;
+            }
+          }
 
-#loginBtn:hover {
-  cursor: pointer;
-}
+          button {
+            color: $fontColor;
+            font-size: 2rem;
+            width: 5vw;
+            height: 3vh;
+            border-radius: 1vw;
+            border: solid black;
+            background-color: transparent;
+          }
+          button:hover {
+            cursor: pointer;
+            transition: 1s linear;
+            background-color: green;
+          }
+        }
+        .indivPortfolioItem:hover {
+          cursor: pointer;
+        }
 
-#or {
-  margin-top: 40px;
-  color: #1d465c;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12px;
-  margin-bottom: 20px;
-}
+        .indivPortfolioItemSelected {
+          text-align: left;
+          font-size: 1.5rem;
+          border: solid black;
+          border-radius: 0.75vw;
+          background-color: rgba(56, 144, 56, 0.541);
+          transition: 0.25s linear;
+          padding: 2rem;
+          margin-bottom: 1vh;
+          .nameImageWrapper {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            .portfolioName {
+              align-self: flex-start;
+              margin-right: auto;
+              margin-top: auto;
+              width: fit-content;
+              height: fit-content;
+            }
+          }
 
-h6 {
-  font-family: $fontSubTitle;
-  font-size: 15px;
-  margin-right: 10%;
-  margin-bottom: 10px;
-}
+          button {
+            color: $fontColor;
+            font-size: 2rem;
+            width: 5vw;
+            height: 3vh;
+            border-radius: 1vw;
+            border: solid black;
+            background-color: transparent;
+          }
+          button:hover {
+            cursor: pointer;
+            transition: 1s linear;
+            background-color: green;
+          }
+        }
+        .indivPortfolioItemSelected:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    .portfolioWrapper::-webkit-scrollbar {
+      width: 0.5vw;
+    }
 
-#signupArea {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
+    .portfolioWrapper::-webkit-scrollbar-track {
+      background-color: $primaryDark;
+      border-radius: 0.5vw;
+    }
 
-h2 {
-  margin-top: 30px;
-  color: #1d465c;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 12px;
-}
+    .portfolioWrapper::-webkit-scrollbar-thumb {
+      border-radius: 0.5vw;
+      border: 0.15vw solid transparent;
+      background-clip: content-box;
+      background-color: $primaryLight;
+    }
+  }
+  .currentNFTWrapper {
+    width: 100%;
+    margin-top: 1vh;
+    height: 90%;
+    margin-left: 3vw;
+    display: flex;
+    flex-direction: column;
+    .imageAndDescriptionWrapper {
+      display: flex;
+      width: 100%;
+      height: 50%;
+      .currentNFTImage {
+        width: 50%;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        .NFTimage {
+          display: flex;
+          width: 80%;
+          height: fit-content;
+          align-self: center;
+          justify-content: center;
+        }
+      }
+      .currentNFTDescriptionNameWrapper {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        font-size: 1.5rem;
+        justify-content: space-evenly;
+        .currentNFTName {
+          width: fit-content;
+          height: fit-content;
+          align-self: center;
+          text-decoration: underline;
+          font-style: italic;
+        }
+        .currentNFTDescription {
+          margin-top: 1vh;
+          height: 100%;
+          width: 100%;
+          align-content: center;
+        }
+      }
+    }
+    .graphContainer {
+      width: 100%;
+      height: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
 
-#signupBtn {
-  border-radius: 4px;
-  background-color: transparent;
-  border: 1px solid #1d465c;
-  width: 70px;
-  height: 30px;
-  font-size: 15px;
-  font-family: $buttonsFont;
-  color: #1d465c;
-}
+      .graph {
+        width: 70%;
+        height: fit-content;
+        align-self: center;
+      }
+    }
+  }
 
-#signupBtn:hover {
-  cursor: pointer;
-}
+  .descriptionAndCostWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 43.5%;
+    height: 100%;
+    margin-right: auto;
+    margin-top: 1vh;
 
-#loginAttemptMessage {
-  margin-top: 10px;
-  font-family: $fontSubTitle;
-  font-size: 12px;
-  color: rgb(145, 13, 13);
+    .descriptionAndPriceCard {
+      font-size: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      border: solid $primaryLight;
+      border-radius: 1vw;
+      padding: 2rem;
+      height: fit-content;
+      width: 80%;
+
+      .imageInfoAndExitWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .spaceFill {
+          width: 25%;
+          height: 100%;
+        }
+        .imageInfo {
+          width: fit-content;
+          height: fit-content;
+          align-self: center;
+        }
+
+        .exitWrapper {
+          display: flex;
+          flex-direction: row;
+          align-self: flex-end;
+          justify-content: flex-end;
+          height: 100%;
+          width: 25%;
+          .infoExit {
+            font-size: 4rem;
+            opacity: 50%;
+            margin-bottom: auto;
+            margin-left: auto;
+          }
+          .infoExit:hover {
+            cursor: pointer;
+            opacity: 100%;
+          }
+        }
+      }
+      .buttonDiv {
+        display: flex;
+        justify-content: center;
+        button {
+          color: $fontColor;
+          font-size: 3rem;
+          width: 10vw;
+          height: 8vh;
+          border-radius: 1vw;
+          border: solid green;
+          background-color: transparent;
+        }
+        button:hover {
+          cursor: pointer;
+          transition: 1s linear;
+          background-color: green;
+        }
+      }
+    }
+
+    #purchaseNFTErrorMessage {
+      text-align: center;
+      font-size: 3rem;
+      height: 15vh;
+      width: 100%;
+    }
+  }
 }
