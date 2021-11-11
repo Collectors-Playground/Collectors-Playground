@@ -21,15 +21,15 @@ app.use('/graphql', (req: Request, res: Response) => {
 
 routes(app);
 
-// app.use('/dashboard', (req: Request, res: Response) => {
-//   res.status(404).sendFile(path.join(__dirname, '../public/index.html'));
-// });
+app.use('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
-// app.use('/*', (req: Request, res: Response) => {
-//   res
-//     .status(404)
-//     .sendFile(path.join(__dirname, '../public/client/HTML404Page.html'));
-// });
+app.use('/*', (req: Request, res: Response) => {
+  res
+    .status(404)
+    .sendFile(path.join(__dirname, '../public/client/HTML404Page.html'));
+});
 
 // app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 //   const defaultErr = {
